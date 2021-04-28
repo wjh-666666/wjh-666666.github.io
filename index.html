@@ -90,6 +90,10 @@
 	</header>		
 </div>
 
+<div style="position:absolute;bottom:10px;left:0px;width:40%">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=572166420&auto=1&height=66"></iframe>
+</div>
+
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -151,6 +155,72 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-细胞自动机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">细胞自动机</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2021-04-28T11:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="细胞自动机"><a href="#细胞自动机" class="headerlink" title="细胞自动机"></a>细胞自动机</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;windows.h&gt;</p>
+<p>#define ROWS 25<br>#define COLS 25</p>
+<p>int board[ROWS][COLS];<br>int temp[ROWS][COLS];</p>
+<p>void HideCursor()<br>{<br> CONSOLE_CURSOR_INFO cursor_info = {1, 0};<br> SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);<br>}<br>int system(const char* string);<br>void randomize_board(){<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(rand()%5==0){<br>                board[x][y]=1;<br>            }<br>            temp[x][y]=board[x][y];<br>        }<br>    }<br>    HideCursor();<br>}<br>void show_board(){<br>    system(“cls”);<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(board[x][y]){<br>                printf(“■”);<br>            }else{<br>                printf(“□”);<br>            }<br>        }<br>        printf(“\n”);<br>    }<br>    Sleep(100);<br>}<br>int num_neighbours(int x,int y){<br>    int num=0;<br>    int tempy=y;<br>    int tempx=x;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(y+1&gt;ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(x+1&gt;COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x+1&gt;=COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(x+1&gt;=ROWS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    return num;<br>}<br>void update_board(){<br>    int neighbours=0;<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            neighbours=num_neighbours(x,y);<br>            if(neighbours&lt;2&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours&gt;3&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours==3&amp;&amp;board[x][y]==0){<br>                temp[x][y]=1;<br>            }<br>        }<br>    }<br>    for(int i=0;i&lt;ROWS;i++){<br>        for(int j=0;j&lt;COLS;j++){<br>            board[j][i]=temp[j][i];<br>        }<br>    }<br>    show_board();<br>}<br>int main(){<br>    randomize_board();<br>    while(1){<br>        update_board();<br>    }<br>    return 0;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-IDEA下载打不开" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -885,3 +955,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
   </div>
 </body>
 </html>
+
+

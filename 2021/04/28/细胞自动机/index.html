@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>IDEA下载打不开 | Hexo</title>
+  <title>细胞自动机 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IDEA下载后打不开，不知道问题都束手无策第一步：找到安装的idea文件所在位置 第二步：在bin目录下找到idea.bat 第三步：在文件的末尾加上pause 第四步：运行可得知错误（本人问题是valid jvm installation）">
+  <meta name="description" content="细胞自动机#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;windows.h&gt; #define ROWS 25#define COLS 25 int board[ROWS][COLS];int temp[ROWS][COLS]; void HideCursor(){ CONSOLE_CURSOR_INFO cursor_i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IDEA下载打不开">
-<meta property="og:url" content="http://example.com/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/index.html">
+<meta property="og:title" content="细胞自动机">
+<meta property="og:url" content="http://example.com/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IDEA下载后打不开，不知道问题都束手无策第一步：找到安装的idea文件所在位置 第二步：在bin目录下找到idea.bat 第三步：在文件的末尾加上pause 第四步：运行可得知错误（本人问题是valid jvm installation）">
+<meta property="og:description" content="细胞自动机#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;windows.h&gt; #define ROWS 25#define COLS 25 int board[ROWS][COLS];int temp[ROWS][COLS]; void HideCursor(){ CONSOLE_CURSOR_INFO cursor_i">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-27T12:10:07.000Z">
-<meta property="article:modified_time" content="2021-04-27T12:15:42.077Z">
+<meta property="article:published_time" content="2021-04-28T11:47:55.000Z">
+<meta property="article:modified_time" content="2021-04-28T11:49:03.373Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -158,30 +158,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-IDEA下载打不开" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-细胞自动机" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      IDEA下载打不开
+      细胞自动机
     </h1>
   
 
         
-        <a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" class="archive-article-date">
-  	<time datetime="2021-04-27T12:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
+        <a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2021-04-28T11:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="IDEA下载后打不开，不知道问题都束手无策"><a href="#IDEA下载后打不开，不知道问题都束手无策" class="headerlink" title="IDEA下载后打不开，不知道问题都束手无策"></a>IDEA下载后打不开，不知道问题都束手无策</h2><p>第一步：找到安装的idea文件所在位置</p>
-<p>第二步：在bin目录下找到idea.bat</p>
-<p>第三步：在文件的末尾加上pause</p>
-<p>第四步：运行可得知错误（本人问题是valid jvm installation）</p>
+        <h2 id="细胞自动机"><a href="#细胞自动机" class="headerlink" title="细胞自动机"></a>细胞自动机</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;windows.h&gt;</p>
+<p>#define ROWS 25<br>#define COLS 25</p>
+<p>int board[ROWS][COLS];<br>int temp[ROWS][COLS];</p>
+<p>void HideCursor()<br>{<br> CONSOLE_CURSOR_INFO cursor_info = {1, 0};<br> SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);<br>}<br>int system(const char* string);<br>void randomize_board(){<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(rand()%5==0){<br>                board[x][y]=1;<br>            }<br>            temp[x][y]=board[x][y];<br>        }<br>    }<br>    HideCursor();<br>}<br>void show_board(){<br>    system(“cls”);<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(board[x][y]){<br>                printf(“■”);<br>            }else{<br>                printf(“□”);<br>            }<br>        }<br>        printf(“\n”);<br>    }<br>    Sleep(100);<br>}<br>int num_neighbours(int x,int y){<br>    int num=0;<br>    int tempy=y;<br>    int tempx=x;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(y+1&gt;ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(x+1&gt;COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x+1&gt;=COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(x+1&gt;=ROWS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    return num;<br>}<br>void update_board(){<br>    int neighbours=0;<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            neighbours=num_neighbours(x,y);<br>            if(neighbours&lt;2&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours&gt;3&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours==3&amp;&amp;board[x][y]==0){<br>                temp[x][y]=1;<br>            }<br>        }<br>    }<br>    for(int i=0;i&lt;ROWS;i++){<br>        for(int j=0;j&lt;COLS;j++){<br>            board[j][i]=temp[j][i];<br>        }<br>    }<br>    show_board();<br>}<br>int main(){<br>    randomize_board();<br>    while(1){<br>        update_board();<br>    }<br>    return 0;<br>}</p>
 
       
 
@@ -261,7 +261,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -275,18 +275,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          细胞自动机
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">贪吃蛇</div>
+    <a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IDEA下载打不开</div>
       <i class="icon-circle-right"></i>
     </a>
   
