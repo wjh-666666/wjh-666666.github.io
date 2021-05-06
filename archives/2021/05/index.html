@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>Archives: 2021/5 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/archives/2021/05/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -156,640 +156,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-日期时间显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">日期时间显示</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/" class="archive-article-date">
   	<time datetime="2021-05-06T10:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="日期时间显示"><a href="#日期时间显示" class="headerlink" title="日期时间显示"></a>日期时间显示</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;</p>
-<p>void PrintTime()<br>{<br>    time_t timep;<br>    struct tm* p;<br>    time(&amp;timep);<br>    p=gmtime(&amp;timep);<br>    printf(“| Data：%d-%d-%d  |”,1900+p-&gt;tm_year,1+p-&gt;tm_mon,p-&gt;tm_mday);<br>    printf(“ Today is “);<br>    switch (p-&gt;tm_wday)<br>    {<br>        case 7:<br>            printf(“Sunday |”);<br>            break;<br>        case 1:<br>            printf(“Monday |”);<br>            break;<br>        case 2:<br>            printf(“Tuesday |”);<br>            break;<br>        case 3:<br>            printf(“Wednesday |”);<br>            break;<br>        case 4:<br>            printf(“Thursday |”);<br>            break;<br>        case 5:<br>            printf(“Friday |”);<br>            break;<br>        case 6:<br>            printf(“Saturday |”);<br>            break;<br>        default:<br>            break;<br>    }<br>    if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&gt;10&amp;&amp;p-&gt;tm_sec&gt;10)<br>        printf(“ Time：0%d:%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&gt;10)<br>        printf(“ Time：0%d:0%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：0%d:0%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：%d:0%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：%d:%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&gt;=10)<br>        printf(“ Time：%d:%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&gt;=10)<br>        printf(“ Time：%d:0%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：0%d:%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>}<br>int main()<br>{<br>    PrintTime();<br>    return 0;<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-细胞自动机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">细胞自动机</a>
+      <a class="archive-article-title" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">日期时间显示</a>
     </h1>
   
 
-        
-        <a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2021-04-28T11:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="细胞自动机"><a href="#细胞自动机" class="headerlink" title="细胞自动机"></a>细胞自动机</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;windows.h&gt;</p>
-<p>#define ROWS 25<br>#define COLS 25</p>
-<p>int board[ROWS][COLS];<br>int temp[ROWS][COLS];</p>
-<p>void HideCursor()<br>{<br> CONSOLE_CURSOR_INFO cursor_info = {1, 0};<br> SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);<br>}<br>int system(const char* string);<br>void randomize_board(){<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(rand()%5==0){<br>                board[x][y]=1;<br>            }<br>            temp[x][y]=board[x][y];<br>        }<br>    }<br>    HideCursor();<br>}<br>void show_board(){<br>    system(“cls”);<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            if(board[x][y]){<br>                printf(“■”);<br>            }else{<br>                printf(“□”);<br>            }<br>        }<br>        printf(“\n”);<br>    }<br>    Sleep(100);<br>}<br>int num_neighbours(int x,int y){<br>    int num=0;<br>    int tempy=y;<br>    int tempx=x;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(y+1&gt;ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(board[x][tempy]==1)<br>        num++;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(x+1&gt;COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][y]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x+1&gt;=COLS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(x+1&gt;=ROWS)<br>        tempx=0;<br>    else<br>        tempx=x+1;<br>    if(y-1&lt;0)<br>        tempy=ROWS-1;<br>    else<br>        tempy=y-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    if(y+1&gt;=ROWS)<br>        tempy=0;<br>    else<br>        tempy=y+1;<br>    if(x-1&lt;0)<br>        tempx=COLS-1;<br>    else<br>        tempx=x-1;<br>    if(board[tempx][tempy]==1)<br>        num++;<br>    return num;<br>}<br>void update_board(){<br>    int neighbours=0;<br>    for(int y=0;y&lt;ROWS;y++){<br>        for(int x=0;x&lt;COLS;x++){<br>            neighbours=num_neighbours(x,y);<br>            if(neighbours&lt;2&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours&gt;3&amp;&amp;board[x][y]==1){<br>                temp[x][y]=0;<br>            }<br>            else if(neighbours==3&amp;&amp;board[x][y]==0){<br>                temp[x][y]=1;<br>            }<br>        }<br>    }<br>    for(int i=0;i&lt;ROWS;i++){<br>        for(int j=0;j&lt;COLS;j++){<br>            board[j][i]=temp[j][i];<br>        }<br>    }<br>    show_board();<br>}<br>int main(){<br>    randomize_board();<br>    while(1){<br>        update_board();<br>    }<br>    return 0;<br>}</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-IDEA下载打不开" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">IDEA下载打不开</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" class="archive-article-date">
-  	<time datetime="2021-04-27T12:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="IDEA下载后打不开，不知道问题都束手无策"><a href="#IDEA下载后打不开，不知道问题都束手无策" class="headerlink" title="IDEA下载后打不开，不知道问题都束手无策"></a>IDEA下载后打不开，不知道问题都束手无策</h2><p>第一步：找到安装的idea文件所在位置</p>
-<p>第二步：在bin目录下找到idea.bat</p>
-<p>第三步：在文件的末尾加上pause</p>
-<p>第四步：运行可得知错误（本人问题是valid jvm installation）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-贪吃蛇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/">贪吃蛇</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/" class="archive-article-date">
-  	<time datetime="2021-04-27T11:25:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="贪吃蛇"><a href="#贪吃蛇" class="headerlink" title="贪吃蛇"></a>贪吃蛇</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#include&lt;windows.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;conio.h&gt;</p>
-<p>#define up ‘w’<br>#define down ‘s’<br>#define left ‘a’<br>#define right ‘d’<br>typedef struct Snake{<br>    int x;<br>    int y;<br>    struct Snake* next;<br>}snake;<br>snake* head;<br>struct Food{<br>    int x;<br>    int y;<br>}food;<br>char name[20];<br>int score=0;<br>char click=1;<br>int speed;<br>void gotoxy(int x,int y){<br>    COORD pos;<br>    pos.X=x;<br>    pos.Y=y;<br>    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),pos);<br>    CONSOLE_CURSOR_INFO info;<br>    info.bVisible=FALSE;<br>    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&amp;info);<br>}<br>void welcome(){<br>    gotoxy(15,10);<br>    printf(“/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>/“);<br>    gotoxy(15,20);<br>    printf(“/</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/“);<br>    gotoxy(20,13);<br>    printf(“WELCOME TO THE GAME OF RETRO SNAKE”);<br>    gotoxy(20,18);<br>    printf(“PLEASE ENTER YOUR NAME:”);<br>    scanf(“%s”,&amp;name,20);<br>    system(“cls”);<br>}<br>void creategraph(){<br>    int i;<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),2);<br>    for(i=0;i&lt;58;i+=2){<br>        gotoxy(i,0);<br>        printf(“■”);<br>        gotoxy(i,26);<br>        printf(“■”);<br>    }<br>    for(i=1;i&lt;26;i++){<br>        gotoxy(0,i);<br>        printf(“■”);<br>        gotoxy(56,i);<br>        printf(“■”);<br>    }<br>    head=(snake*)malloc(sizeof(snake));<br>    snake* p=(snake*)malloc(sizeof(snake));<br>    snake* q=(snake*)malloc(sizeof(snake));<br>    head-&gt;x=16;<br>    head-&gt;y=15;<br>    p-&gt;x=16;<br>    p-&gt;y=16;<br>    q-&gt;x=16;<br>    q-&gt;y=17;<br>    head-&gt;next=p;<br>    p-&gt;next=q;<br>    q-&gt;next=NULL;<br>}<br>createfood(){<br>    bool flag=false;<br>    while(!flag)<br>    {<br>        flag=true;<br>        srand((int)time(NULL));<br>        food.y=rand()%(25-1+1)+1;<br>        food.x=rand()%(54-2+1)+2;<br>        if(food.x%2!=0)<br>        {<br>            food.x=food.x+1;<br>        }<br>        snake* judge=head;<br>        while(1)<br>        {<br>            if(food.x==judge-&gt;x&amp;&amp;food.y==judge-&gt;y)<br>            {<br>                flag=false;<br>            }<br>            if(judge-&gt;next==NULL){<br>                break;<br>            }<br>            judge = judge-&gt;next;<br>        }<br>    }<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);<br>    gotoxy(food.x,food.y);<br>    printf(“★”);<br>}<br>void finish(){<br>    system(“cls”);<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),6);<br>    gotoxy(20, 16);<br>    printf(“Your Score is %d.”, score);<br>    snake* p=head;<br>    snake* q;<br>    while(p!=NULL){<br>        q=p-&gt;next;<br>        free(p);<br>        p=q;<br>    }<br>    system(“pause”);<br>}<br>int judge(){<br>    if (head-&gt;x==0||head-&gt;x==56||head-&gt;y==0||head-&gt;y==26)<br>    {<br>        finish();<br>        return 0;<br>    }<br>    snake* p=head-&gt;next;<br>    while(p!=NULL)<br>    {<br>        if(head-&gt;x==p-&gt;x&amp;&amp;head-&gt;y==p-&gt;y)<br>        {<br>            finish();<br>            return 0;<br>        }<br>        p=p-&gt;next;<br>    }<br>    return 1;<br>}<br>void changebody(int x,int y){<br>    snake* p=head;<br>    while(p-&gt;next-&gt;next!=NULL){<br>        p=p-&gt;next;<br>    }<br>    free(p-&gt;next);<br>    p-&gt;next=NULL;<br>    snake* newhead=(snake*)malloc(sizeof(snake));<br>    newhead-&gt;x=x;<br>    newhead-&gt;y=y;<br>    newhead-&gt;next=head;<br>    head=newhead;<br>}<br>void movebody(){<br>    int x=head-&gt;x,y=head-&gt;y;<br>    snake* p=head;<br>    while(p-&gt;next!=NULL){<br>        p=p-&gt;next;<br>    }<br>    gotoxy(p-&gt;x,p-&gt;y);<br>    printf(“  “);<br>    switch(click){<br>        case up:<br>            y-=1;<br>            break;<br>        case down:<br>            y+=1;<br>            break;<br>        case left:<br>            x-=2;<br>            break;<br>        case right:<br>            x+=2;<br>            break;<br>        default:<br>            break;<br>    }<br>    if(x!=head-&gt;x||y!=head-&gt;y){<br>        changebody(x,y);<br>    }<br>    p=head;<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),11);<br>    gotoxy(p-&gt;x,p-&gt;y);<br>    printf(“■”);<br>    if(score&lt;=100)<br>        speed=150;<br>    else if(score&lt;=200)<br>        speed=100;<br>    else if(score&lt;=400)<br>        speed=50;<br>    else<br>        speed=10;<br>        Sleep(speed);<br>}<br>void eat(){<br>    if(head-&gt;x==food.x&amp;&amp;head-&gt;y==food.y){<br>        createfood();<br>        snake* _new=(snake*)malloc(sizeof(snake));<br>        snake* p=head;<br>        while(p-&gt;next!=NULL){<br>            p=p-&gt;next;<br>        }<br>        p-&gt;next=_new;<br>        _new-&gt;next=NULL;<br>        score+=10;<br>        gotoxy(64,15);<br>        printf(“YOUR SCORE:%d”,score);<br>    }<br>}<br>int clickcontrol(){<br>    char c;<br>    while(1){<br>        if(judge()==0)<br>            return 0;<br>        if(_kbhit()){<br>            click=_getch();<br>        }<br>        movebody();<br>        eat();<br>    }<br>    return 1;<br>}<br>int main(){<br>    system(“title 贪吃蛇”);<br>    system(“color 0B”);<br>    system(“mode con cols=80 lines=40”);//设置窗口尺寸<br>    welcome();<br>    creategraph();<br>    createfood();<br>    if(clickcontrol()==0)<br>        return 0;<br>    return 0;<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2048" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/26/2048/">2048</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/26/2048/" class="archive-article-date">
-  	<time datetime="2021-04-26T12:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2048小游戏"><a href="#2048小游戏" class="headerlink" title="2048小游戏"></a>2048小游戏</h2><p>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdio.h&gt;<br>#include&lt;Windows.h&gt;<br>#include&lt;conio.h&gt;</p>
-<p>#define ROW 4<br>#define COL 4</p>
-<p>int arr[ROW][COL]={0};<br>int score=0;</p>
-<p>void SetCurPos(int x,int y){<br>    HANDLE hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);<br>    COORD coord={x,y};<br>    SetConsoleCursorPosition(hStdOutput,coord);<br>}<br>void ViewInit(int width,int height){<br>    HANDLE hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);<br>    CONSOLE_CURSOR_INFO info;<br>    GetConsoleCursorInfo(hStdOutput,&amp;info);<br>    info.bVisible=0;<br>    SetConsoleCursorInfo(hStdOutput,&amp;info);<br>}<br>void GamePrint(int row ,int col){<br>    printf(“ SCORE = %d”,score);<br>    SetCurPos(0,2);<br>    int i=0;<br>    for(i=0;i&lt;row;i++){<br>        for(int k=0;k&lt;col;k++){<br>            if(k==0&amp;&amp;i==0){<br>                printf(“┌”);<br>            }<br>            else if(k!=0&amp;&amp;i==0){<br>                printf(“┬”);<br>            }<br>            else if(k==0&amp;&amp;i!=0){<br>                printf(“├”);<br>            }<br>            else{<br>                printf(“┼”);<br>            }<br>            for(int j=0;j&lt;4;j++){<br>                printf(“─”);<br>            }<br>        }<br>        if(i==0){<br>            printf(“┐\n”);<br>        }<br>        else{<br>            printf(“┤\n”);<br>        }<br>        for(int k=0;k&lt;col;k++){<br>            printf(“│”);<br>            if(arr[i][k]){<br>                printf(“%4d”,arr[i][k]);<br>            }<br>            else{<br>                for(int j=0;j&lt;4;j++){<br>                    printf(“ “);<br>                }<br>            }<br>        }<br>        printf(“│\n”);<br>        if(i==row-1){<br>            for(int k=0;k&lt;col;k++){<br>                if(k==0){<br>                    printf(“└”);<br>                }<br>                else{<br>                    printf(“┴”);<br>                }<br>                for(int j=0;j&lt;4;j++){<br>                    printf(“─”);<br>                }<br>            }<br>            printf(“┘\n”);<br>        }<br>    }<br>    SetCurPos(0,12);<br>    printf(“ 上下左右表示方向\n”);<br>}<br>void RandNum(int row,int col){<br>    int x=0;<br>    int y=0;<br>    do{<br>        x=rand()%4;<br>        y=rand()%4;<br>    }while(arr[x][y]);<br>    arr[x][y]=(rand()%10?2:4);<br>}<br>int IfWin(int row,int col){<br>    for(int i=0;i&lt;row;i++){<br>        for(int j=0;j&lt;col;j++){<br>            if(arr[i][j]==2048){<br>                return 1;<br>            }<br>            if(arr[i][j]==0){<br>                return 0;<br>            }<br>        }<br>    }<br>    for(int i=0;i&lt;row-1;i++){<br>        for(int j=0;j&lt;col-1;j++){<br>            if(arr[i][j]==arr[i][j+1]||arr[j][i]==arr[j+1][i]){<br>                return 0;<br>            }<br>        }<br>    }<br>    return -1;<br>}<br>void MoveLeft(){<br>    for(int i=0;i&lt;ROW;i++){<br>        int j=1;<br>        int k=0;<br>        for(;j&lt;COL;j++){<br>            if(arr[i][j]&gt;0){<br>                if(arr[i][k]==0){<br>                    arr[i][k]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[i][k]==arr[i][j]){<br>                    arr[i][k]=2<em>arr[i][j];<br>                    score+=arr[i][k];<br>                    arr[i][j]=0;<br>                    k++;<br>                }<br>                else{<br>                    arr[i][++k]=arr[i][j];<br>                    if(j!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveRight(){<br>    for(int i=0;i&lt;ROW;i++){<br>        int j=COL-2;<br>        int k=COL-1;<br>        for(;j&gt;=0;j–){<br>            if(arr[i][j]&gt;0){<br>                if(arr[i][k]==0){<br>                    arr[i][k]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[i][k]==arr[i][j]){<br>                    arr[i][k]=2</em>arr[i][j];<br>                    score+=arr[i][k];<br>                    arr[i][j]=0;<br>                    k–;<br>                }<br>                else{<br>                    arr[i][–k]=arr[i][j];<br>                    if(j!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveUp(){<br>    for(int j=0;j&lt;COL;j++){<br>        int i=1;<br>        int k=0;<br>        for(;i&lt;ROW;i++){<br>            if(arr[i][j]&gt;0){<br>                if(arr[k][j]==0){<br>                    arr[k][j]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[k][j]==arr[i][j]){<br>                    arr[k][j]=2<em>arr[i][j];<br>                    score+=arr[k][j];<br>                    arr[i][j]=0;<br>                    k++;<br>                }<br>                else{<br>                    arr[++k][j]=arr[i][j];<br>                    if(i!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveDown(){<br>    for(int j=0;j&lt;COL;j++){<br>        int i=ROW-2;<br>        int k=ROW-1;<br>        for(;i&gt;=0;i–){<br>            if(arr[i][j]&gt;0){<br>                if(arr[k][j]==0){<br>                    arr[k][j]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[k][j]==arr[i][j]){<br>                    arr[k][j]=2</em>arr[i][j];<br>                    score+=arr[k][j];<br>                    arr[i][j]=0;<br>                    k–;<br>                }<br>                else{<br>                    arr[–k][j]=arr[i][j];<br>                    if(i!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void GameContinue(){<br>    int ch2=0;<br>    while(1){<br>        ch2=_getch();<br>        if(ch2==72){<br>            MoveUp();<br>            break;<br>        }<br>        if(ch2==80){<br>            MoveDown();<br>            break;<br>        }<br>        if(ch2==75){<br>            MoveLeft();<br>            break;<br>        }<br>        if(ch2==77){<br>            MoveRight();<br>            break;<br>        }<br>    }<br>}<br>void game(){<br>    srand((unsigned int)time(NULL));<br>    ViewInit(20,10);<br>    RandNum(ROW,COL);<br>    RandNum(ROW,COL);<br>    GamePrint(ROW,COL);<br>    while(1){<br>        if(IfWin(ROW,COL)==1){<br>            printf(“YOU WIN!\n”);<br>            return;<br>        }<br>        else if(IfWin(ROW,COL)==-1){<br>            printf(“GAME OVER\n”);<br>            return;<br>        }<br>        else{<br>            GameContinue();<br>            system(“cls”);<br>            RandNum(ROW,COL);<br>            GamePrint(ROW,COL);<br>        }<br>    }<br>}<br>int main(){<br>    game();<br>    system(“pause”);<br>    return 0;<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/26/2048/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-课后习题随机卡牌生成器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">一道简单的课后习题</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2021-04-15T09:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="随机生成四张卡牌器"><a href="#随机生成四张卡牌器" class="headerlink" title="随机生成四张卡牌器"></a>随机生成四张卡牌器</h2><p>package cn.campsg.gm;</p>
-<p>import javafx.application.Application;<br>import javafx.stage.Stage;<br>import javafx.scene.Scene;<br>import javafx.scene.image.Image;<br>import javafx.scene.image.ImageView;<br>import javafx.scene.layout.HBox;<br>import javafx.scene.layout.VBox;<br>import javafx.geometry.Insets;<br>import javafx.geometry.Pos;<br>import javafx.scene.control.Button;<br>import java.util.ArrayList;</p>
-<p>public class Main extends Application {<br>    @Override<br>    public void start(Stage primaryStage) {<br>        VBox vBox = new VBox();<br>        vBox.setAlignment(Pos.CENTER);<br>        vBox.setPadding(new Insets(5, 5, 5, 5));</p>
-<pre><code>    HBox hBox = new HBox(5);
-    hBox.setAlignment(Pos.CENTER);
-    hBox.setPadding(new Insets(5, 5, 5, 5));
-    getCards(hBox);
-
-    Button btRefresh = new Button(&quot;Refresh&quot;);
-
-    btRefresh.setOnAction(e -&gt; getCards(hBox));
-
-    vBox.getChildren().addAll(hBox, btRefresh);
-
-    Scene scene = new Scene(vBox);
-    primaryStage.setTitle(&quot;Exercise_15_01&quot;);
-    primaryStage.setScene(scene);
-    primaryStage.show();
-&#125;
-private void getCards(HBox pane) &#123;
-    pane.getChildren().clear();
-    ArrayList&lt;Integer&gt; cards = new ArrayList&lt;&gt;();
-    for (int i = 0; i &lt; 52; i++) &#123;
-        cards.add(i + 1);
-    &#125;
-
-    java.util.Collections.shuffle(cards);
-
-    for (int i = 0; i &lt; 4; i++) &#123;
-        pane.getChildren().add(new ImageView(new Image(&quot;file:/C:/Users/86178/Desktop/card/&quot; +
-                cards.get(i) + &quot;.png&quot;)));
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">Certificate used to sign the license is not signed by JetBrains root certificate</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/" class="archive-article-date">
-  	<time datetime="2021-04-13T09:18:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="以前使用破解版，现在使用教育优惠，出现报错"><a href="#以前使用破解版，现在使用教育优惠，出现报错" class="headerlink" title="以前使用破解版，现在使用教育优惠，出现报错"></a>以前使用破解版，现在使用教育优惠，出现报错</h2><p>第一步：先打开并进入idea主界面</p>
-<p>第二步：在Help列表中找到Edit Custom VM Options…</p>
-<p>第三步：删除#-javaagent:C:\jetbrains - agent.jar这种类型，可能一行，可能几行</p>
-<p>第四步：退出保存并重新打开</p>
-<p>第五步：在Help列表中找到Register登入申请许可证绑定的邮箱和密码</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2021-03-24T09:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>hello world</p>
-<hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>bye world</p>
-<hr>
-<p>##参考文献</p>
-<p><a target="_blank" rel="noopener" href="http://www.codesheep.cn/">www.codesheep.cn</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/24/hello-world/" class="archive-article-date">
-  	<time datetime="2021-03-24T08:54:51.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -811,9 +218,9 @@ private void getCards(HBox pane) &#123;
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

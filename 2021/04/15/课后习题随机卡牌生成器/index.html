@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>一道简单的课后习题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#JavaFX老是出错使用不了，只好用Java Swing package cn.campsg.java.experiment; import javax.swing.;import java.awt.; public class Main {    public static void main(String[] args)    {        JFrame frame&#x3D;new JFrame">
+  <meta name="description" content="随机生成四张卡牌器package cn.campsg.gm; import javafx.application.Application;import javafx.stage.Stage;import javafx.scene.Scene;import javafx.scene.image.Image;import javafx.scene.image.ImageView;import java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一道简单的课后习题">
-<meta property="og:url" content="http://example.com/2021/04/15/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/index.html">
+<meta property="og:url" content="http://example.com/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#JavaFX老是出错使用不了，只好用Java Swing package cn.campsg.java.experiment; import javax.swing.;import java.awt.; public class Main {    public static void main(String[] args)    {        JFrame frame&#x3D;new JFrame">
+<meta property="og:description" content="随机生成四张卡牌器package cn.campsg.gm; import javafx.application.Application;import javafx.stage.Stage;import javafx.scene.Scene;import javafx.scene.image.Image;import javafx.scene.image.ImageView;import java">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-15T09:47:23.000Z">
-<meta property="article:modified_time" content="2021-04-15T09:56:11.952Z">
+<meta property="article:modified_time" content="2021-04-29T07:48:35.294Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -158,7 +158,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一道简单的课后习题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-课后习题随机卡牌生成器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -170,7 +170,7 @@
   
 
         
-        <a href="/2021/04/15/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/" class="archive-article-date">
+        <a href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="archive-article-date">
   	<time datetime="2021-04-15T09:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
 </a>
         
@@ -178,20 +178,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#JavaFX老是出错使用不了，只好用Java Swing</p>
-<p>package cn.campsg.java.experiment;</p>
-<p>import javax.swing.<em>;<br>import java.awt.</em>;</p>
-<p>public class Main {<br>    public static void main(String[] args)<br>    {<br>        JFrame frame=new JFrame(“Task14.1”);<br>        JPanel panel=new JPanel();<br>        ImageIcon icon1 = new ImageIcon(“C:\Users\86178\Desktop\u=318588728,4148440087&amp;fm=26&amp;gp=0.jpg”);<br>        ImageIcon icon2 = new ImageIcon(“C:\Users\86178\Desktop\u=1716473136,3325303741&amp;fm=26&amp;gp=0.jpg”);<br>        ImageIcon icon3 = new ImageIcon(“C:\Users\86178\Desktop\u=620410950,3716896411&amp;fm=26&amp;gp=0.jpg”);<br>        ImageIcon icon4 = new ImageIcon(“C:\Users\86178\Desktop\u=2703219383,1540652215&amp;fm=26&amp;gp=0.jpg”);</p>
-<pre><code>    panel.setLayout(new GridLayout(2,2,2,2));
-    panel.add(new JLabel(icon1));
-    panel.add(new JLabel(icon2));
-    panel.add(new JLabel(icon3));
-    panel.add(new JLabel(icon4));
+        <h2 id="随机生成四张卡牌器"><a href="#随机生成四张卡牌器" class="headerlink" title="随机生成四张卡牌器"></a>随机生成四张卡牌器</h2><p>package cn.campsg.gm;</p>
+<p>import javafx.application.Application;<br>import javafx.stage.Stage;<br>import javafx.scene.Scene;<br>import javafx.scene.image.Image;<br>import javafx.scene.image.ImageView;<br>import javafx.scene.layout.HBox;<br>import javafx.scene.layout.VBox;<br>import javafx.geometry.Insets;<br>import javafx.geometry.Pos;<br>import javafx.scene.control.Button;<br>import java.util.ArrayList;</p>
+<p>public class Main extends Application {<br>    @Override<br>    public void start(Stage primaryStage) {<br>        VBox vBox = new VBox();<br>        vBox.setAlignment(Pos.CENTER);<br>        vBox.setPadding(new Insets(5, 5, 5, 5));</p>
+<pre><code>    HBox hBox = new HBox(5);
+    hBox.setAlignment(Pos.CENTER);
+    hBox.setPadding(new Insets(5, 5, 5, 5));
+    getCards(hBox);
 
-    frame.add(panel);
-    frame.setBounds(200,200,600,600);
-    frame.setVisible(true);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    Button btRefresh = new Button(&quot;Refresh&quot;);
+
+    btRefresh.setOnAction(e -&gt; getCards(hBox));
+
+    vBox.getChildren().addAll(hBox, btRefresh);
+
+    Scene scene = new Scene(vBox);
+    primaryStage.setTitle(&quot;Exercise_15_01&quot;);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+&#125;
+private void getCards(HBox pane) &#123;
+    pane.getChildren().clear();
+    ArrayList&lt;Integer&gt; cards = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; 52; i++) &#123;
+        cards.add(i + 1);
+    &#125;
+
+    java.util.Collections.shuffle(cards);
+
+    for (int i = 0; i &lt; 4; i++) &#123;
+        pane.getChildren().add(new ImageView(new Image(&quot;file:/C:/Users/86178/Desktop/card/&quot; +
+                cards.get(i) + &quot;.png&quot;)));
+    &#125;
 &#125;
 </code></pre>
 <p>}</p>
@@ -274,7 +292,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/15/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/" alt="微信分享二维码">
     </div>
 </div>
 
