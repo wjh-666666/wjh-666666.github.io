@@ -156,6 +156,206 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-文本编辑器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">文本编辑器</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2021-05-06T11:35:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>package cn.campsg.gm;</p>
+<p>import java.awt.<em>;<br>import java.awt.event.</em>;<br>import java.io.<em>;<br>import javax.swing.</em>;<br>import javax.swing.text.*;</p>
+<p>public class Main extends JFrame {<br>    public JTextPane textPane = new JTextPane();<br>    public JFileChooser filechooser = new JFileChooser();<br>    public Main()<br>    {<br>        super(“文本编辑器”);<br>        Action[] actions=<br>            {<br>                new NewAction(),<br>                new OpenAction(),<br>                new SaveAction(),<br>                new CutAction(),<br>                new CopyAction(),<br>                new PasteAction(),<br>                new AboutAction(),<br>                new ExitAction(),<br>                new HelpAction()<br>            };<br>        setJMenuBar(createJMenuBar(actions));<br>        Container container=getContentPane();<br>        container.add(textPane, BorderLayout.CENTER);<br>        setSize(600,700);<br>        setVisible(true);<br>        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>    }<br>    private JMenuBar createJMenuBar(Action[] actions)<br>    {<br>        JMenuBar menubar=new JMenuBar();<br>        JMenu menuFile=new JMenu(“文件(F)”);<br>        JMenu menuEdit=new JMenu(“编辑(E)”);<br>        JMenu menuAbout=new JMenu(“帮助(H)”);<br>        menuFile.add(new JMenuItem(actions[0]));<br>        menuFile.add(new JMenuItem(actions[1]));<br>        menuFile.add(new JMenuItem(actions[2]));<br>        menuFile.add(new JMenuItem(actions[7]));<br>        menuEdit.add(new JMenuItem(actions[3]));<br>        menuEdit.add(new JMenuItem(actions[4]));<br>        menuEdit.add(new JMenuItem(actions[5]));<br>        menuAbout.add(new JMenuItem(actions[6]));<br>        menuAbout.add(new JMenuItem(actions[8]));<br>        menubar.add(menuFile);<br>        menubar.add(menuEdit);<br>        menubar.add(menuAbout);<br>        return menubar;<br>    }<br>    class NewAction extends AbstractAction<br>    {<br>        public NewAction()<br>        {<br>            super(“新建(N)     Ctrl+N”);<br>        }</p>
+<pre><code>    public void actionPerformed(ActionEvent e)
+    &#123;
+        //new Main();
+        textPane.setDocument(new DefaultStyledDocument());
+    &#125;
+&#125;
+
+class OpenAction extends AbstractAction
+&#123;
+    public OpenAction()
+    &#123;
+        super(&quot;打开(O)     Ctrl+O&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        int i=filechooser.showOpenDialog(Main.this);
+        if(i==JFileChooser.APPROVE_OPTION)
+        &#123;
+            File f=filechooser.getSelectedFile();
+            try
+            &#123;
+                InputStream is=new FileInputStream(f);
+                textPane.read(is, &quot;d&quot;);
+            &#125;
+            catch(Exception ex)
+            &#123;
+                ex.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+class SaveAction extends AbstractAction
+&#123;
+    public SaveAction()
+    &#123;
+        super(&quot;保存(S)     Ctrl+S&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        int i=filechooser.showSaveDialog(Main.this);
+        if(i==JFileChooser.APPROVE_OPTION)
+        &#123;
+            File f=filechooser.getSelectedFile();
+            try
+            &#123;
+                FileOutputStream out=new FileOutputStream(f);
+                out.write(textPane.getText().getBytes());
+            &#125;
+            catch(Exception ex)
+            &#123;
+                ex.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+class ExitAction extends AbstractAction
+&#123;
+    public ExitAction()
+    &#123;
+        super(&quot;退出(X)&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        dispose();
+    &#125;
+&#125;
+
+class CutAction extends AbstractAction
+&#123;
+    public CutAction()
+    &#123;
+        super(&quot;剪切(T)     Ctrl+X&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.cut();
+    &#125;
+&#125;
+
+class CopyAction extends AbstractAction
+&#123;
+    public CopyAction()
+    &#123;
+        super(&quot;复制(C)     Ctrl+C&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.copy();
+    &#125;
+&#125;
+
+class PasteAction extends AbstractAction
+&#123;
+    public PasteAction()
+    &#123;
+        super(&quot;粘贴(P)     Ctrl+V&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.paste();
+    &#125;
+&#125;
+
+class AboutAction extends AbstractAction
+&#123;
+    public AboutAction()
+    &#123;
+        super(&quot;关于编辑器(A)&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        JOptionPane.showMessageDialog(Main.this,&quot;实现记事本的一些基本功能&quot;,&quot;关于&quot;,JOptionPane.PLAIN_MESSAGE);
+    &#125;
+&#125;
+
+class HelpAction extends AbstractAction
+&#123;
+    public HelpAction()
+    &#123;
+        super(&quot;联系开发者&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        JOptionPane.showMessageDialog(Main.this,&quot;203204350@qq.com&quot;,&quot;开发者邮箱&quot;,JOptionPane.PLAIN_MESSAGE);
+    &#125;
+&#125;
+
+public static void main(String[] args)
+&#123;
+    new Main();
+&#125;
+</code></pre>
+<p>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日期时间显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
