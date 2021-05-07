@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>文本编辑器 | Hexo</title>
+  <title>Archives: 2021 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文本编辑器package cn.campsg.gm; import java.awt.;import java.awt.event.;import java.io.;import javax.swing.;import javax.swing.text.*; public class Main extends JFrame {    public JTextPane textPane &#x3D; new">
-<meta property="og:type" content="article">
-<meta property="og:title" content="文本编辑器">
-<meta property="og:url" content="http://example.com/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2021/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文本编辑器package cn.campsg.gm; import java.awt.;import java.awt.event.;import java.io.;import javax.swing.;import javax.swing.text.*; public class Main extends JFrame {    public JTextPane textPane &#x3D; new">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-06T11:35:14.000Z">
-<meta property="article:modified_time" content="2021-05-06T12:07:35.599Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -158,301 +154,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-文本编辑器" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      文本编辑器
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/03/24/hello-world/" class="archive-article-date">
+  	<time datetime="2021-03-24T08:54:51.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/03/24/hello-world/">Hello World</a>
     </h1>
   
 
-        
-        <a href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2021-05-06T11:35:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>package cn.campsg.gm;</p>
-<p>import java.awt.<em>;<br>import java.awt.event.</em>;<br>import java.io.<em>;<br>import javax.swing.</em>;<br>import javax.swing.text.*;</p>
-<p>public class Main extends JFrame {<br>    public JTextPane textPane = new JTextPane();<br>    public JFileChooser filechooser = new JFileChooser();<br>    public Main()<br>    {<br>        super(“文本编辑器”);<br>        Action[] actions=<br>            {<br>                new NewAction(),<br>                new OpenAction(),<br>                new SaveAction(),<br>                new CutAction(),<br>                new CopyAction(),<br>                new PasteAction(),<br>                new AboutAction(),<br>                new ExitAction(),<br>                new HelpAction()<br>            };<br>        setJMenuBar(createJMenuBar(actions));<br>        Container container=getContentPane();<br>        container.add(textPane, BorderLayout.CENTER);<br>        JScrollPane jsp=new JScrollPane(textPane);<br>        //jsp.setBounds(?, ?, ?, ?);<br>        jsp.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);<br>        container.add(jsp);<br>        setSize(600,700);<br>        setVisible(true);<br>        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>    }<br>    private JMenuBar createJMenuBar(Action[] actions)<br>    {<br>        JMenuBar menubar=new JMenuBar();<br>        JMenu menuFile=new JMenu(“文件(F)”);<br>        JMenu menuEdit=new JMenu(“编辑(E)”);<br>        JMenu menuAbout=new JMenu(“帮助(H)”);<br>        menuFile.add(new JMenuItem(actions[0]));<br>        menuFile.add(new JMenuItem(actions[1]));<br>        menuFile.add(new JMenuItem(actions[2]));<br>        menuFile.add(new JMenuItem(actions[7]));<br>        menuEdit.add(new JMenuItem(actions[3]));<br>        menuEdit.add(new JMenuItem(actions[4]));<br>        menuEdit.add(new JMenuItem(actions[5]));<br>        menuAbout.add(new JMenuItem(actions[6]));<br>        menuAbout.add(new JMenuItem(actions[8]));<br>        menubar.add(menuFile);<br>        menubar.add(menuEdit);<br>        menubar.add(menuAbout);<br>        return menubar;<br>    }<br>    class NewAction extends AbstractAction<br>    {<br>        public NewAction()<br>        {<br>            super(“新建(N)     Ctrl+N”);<br>        }</p>
-<pre><code>    public void actionPerformed(ActionEvent e)
-    &#123;
-        //new Main();
-        textPane.setDocument(new DefaultStyledDocument());
-    &#125;
-&#125;
+        <div class="article-info info-on-right">
+          
+          
 
-class OpenAction extends AbstractAction
-&#123;
-    public OpenAction()
-    &#123;
-        super(&quot;打开(O)     Ctrl+O&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        int i=filechooser.showOpenDialog(Main.this);
-        if(i==JFileChooser.APPROVE_OPTION)
-        &#123;
-            File f=filechooser.getSelectedFile();
-            try
-            &#123;
-                InputStream is=new FileInputStream(f);
-                textPane.read(is, &quot;d&quot;);
-            &#125;
-            catch(Exception ex)
-            &#123;
-                ex.printStackTrace();
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-class SaveAction extends AbstractAction
-&#123;
-    public SaveAction()
-    &#123;
-        super(&quot;保存(S)     Ctrl+S&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        int i=filechooser.showSaveDialog(Main.this);
-        if(i==JFileChooser.APPROVE_OPTION)
-        &#123;
-            File f=filechooser.getSelectedFile();
-            try
-            &#123;
-                FileOutputStream out=new FileOutputStream(f);
-                out.write(textPane.getText().getBytes());
-            &#125;
-            catch(Exception ex)
-            &#123;
-                ex.printStackTrace();
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-class ExitAction extends AbstractAction
-&#123;
-    public ExitAction()
-    &#123;
-        super(&quot;退出(X)&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        dispose();
-    &#125;
-&#125;
-
-class CutAction extends AbstractAction
-&#123;
-    public CutAction()
-    &#123;
-        super(&quot;剪切(T)     Ctrl+X&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        textPane.cut();
-    &#125;
-&#125;
-
-class CopyAction extends AbstractAction
-&#123;
-    public CopyAction()
-    &#123;
-        super(&quot;复制(C)     Ctrl+C&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        textPane.copy();
-    &#125;
-&#125;
-
-class PasteAction extends AbstractAction
-&#123;
-    public PasteAction()
-    &#123;
-        super(&quot;粘贴(P)     Ctrl+V&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        textPane.paste();
-    &#125;
-&#125;
-
-class AboutAction extends AbstractAction
-&#123;
-    public AboutAction()
-    &#123;
-        super(&quot;关于编辑器(A)&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        JOptionPane.showMessageDialog(Main.this,&quot;实现记事本的一些基本功能&quot;,&quot;关于&quot;,JOptionPane.PLAIN_MESSAGE);
-    &#125;
-&#125;
-
-class HelpAction extends AbstractAction
-&#123;
-    public HelpAction()
-    &#123;
-        super(&quot;联系开发者&quot;);
-    &#125;
-    public void actionPerformed(ActionEvent e)
-    &#123;
-        JOptionPane.showMessageDialog(Main.this,&quot;203204350@qq.com&quot;,&quot;开发者邮箱&quot;,JOptionPane.PLAIN_MESSAGE);
-    &#125;
-&#125;
-
-public static void main(String[] args)
-&#123;
-    new Main();
-&#125;
-</code></pre>
-<p>}</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          俄罗斯方块
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日期时间显示</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2021/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -476,8 +223,8 @@ public static void main(String[] args)
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
