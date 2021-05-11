@@ -156,6 +156,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-打砖块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/">打砖块</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-05-11T10:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="打砖块（使用Easyx）"><a href="#打砖块（使用Easyx）" class="headerlink" title="打砖块（使用Easyx）"></a>打砖块（使用Easyx）</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;graphics.h&gt;<br>#include&lt;conio.h&gt;<br>#define ROW 5<br>#define COL 10<br>int ZhuanKuai[ROW][COL] = { 0 };<br>int ballx;<br>int bally;<br>int addx = 1;<br>int addy = -1;<br>bool starting = false;<br>int boardx;<br>int boardy;<br>void DrawZhuanKuai();<br>void InitGame();<br>void BanMove();<br>void ballMove();<br>int main() {<br>    initgraph(400, 600);<br>    InitGame();<br>    while (1) {<br>        if (_kbhit()) {<br>            BanMove();<br>        }<br>        if (bally &gt; boardy) {<br>            break;<br>        }<br>        ballMove();<br>    }<br>    MessageBox(NULL, L”游戏结束！！！”, L”打砖块”, MB_OK);<br>    return 0;<br>}<br>void InitGame() {<br>    ballx = 200;<br>    bally = 580;<br>    boardx = 170;<br>    boardy = 590;<br>    DrawZhuanKuai();<br>    setfillcolor(LIGHTRED);<br>    solidcircle(ballx, bally, 10);<br>    setfillcolor(YELLOW);<br>    solidrectangle(boardx, boardy, boardx + 60, boardy + 10);<br>}<br>void DrawZhuanKuai() {<br>    for (int i = 0; i &lt; ROW; i++) {<br>        for (int j = 0; j &lt; COL; j++) {<br>            if (ZhuanKuai[i][j] == 0) {<br>                if ((i + j) % 2 == 0) {<br>                    setfillcolor(LIGHTCYAN);<br>                    solidrectangle(j * 40, i * 20, j * 40 + 40, i * 20 + 20);<br>                }<br>                else {<br>                    setfillcolor(LIGHTGRAY);<br>                    solidrectangle(j * 40, i * 20, j * 40 + 40, i * 20 + 20);<br>                }<br>            }<br>        }<br>    }<br>}<br>void BanMove() {<br>    setfillcolor(BLACK);<br>    solidrectangle(boardx, boardy, boardx + 60, boardy + 10);<br>    switch (_getch()) {<br>    case 75://向左移动<br>        boardx -= 15;<br>        break;<br>    case 77://向右移动<br>        boardx += 15;<br>        break;<br>    default:<br>        break;<br>    }<br>    if (boardx &lt;= 0) {<br>        boardx = 0;<br>    }<br>    if (boardx &gt;= (400 - 60)) {<br>        boardx = (400 - 60);<br>    }<br>    setfillcolor(YELLOW);<br>    solidrectangle(boardx, boardy, boardx + 60, boardy + 10);<br>}<br>void ballMove() {<br>    setfillcolor(BLACK);<br>    solidcircle(ballx, bally, 10);<br>    BeginBatchDraw();<br>    if (ballx &gt;= (400 - 10) || ballx &lt;= (0 + 10)) {<br>        addx = -1 * addx;<br>    }<br>    if (bally &lt;= 10) {<br>        addy = -1 * addy;<br>    }<br>    int flag = 0;<br>    for (int i = 0; i &lt; ROW; i++) {<br>        for (int j = 0; j &lt; COL; j++) {<br>            int x = j * 40;<br>            int y = i * 20;<br>            if (ZhuanKuai[i][j] == 0 &amp;&amp; x - ballx &lt;= 10 &amp;&amp; ballx - x &lt;= 50 &amp;&amp; bally - y &gt;= 10 &amp;&amp; bally - y &lt;= 30) {<br>                addy = -1 * addy;<br>                ZhuanKuai[i][j] = 1;<br>                flag = 1;<br>                setfillcolor(BLACK);<br>                solidrectangle(x, y, x + 40, y + 20);<br>                break;<br>            }<br>        }<br>        if (flag) {<br>            break;<br>        }<br>    }<br>    if (starting &amp;&amp; boardx - ballx &lt;= 10 &amp;&amp; ballx - boardx &lt;= 70 &amp;&amp; boardy - bally &lt;= 10) {<br>        addy = -1 * addy;<br>    }<br>    starting = true;<br>    ballx += addx;<br>    bally += addy;<br>    setfillcolor(LIGHTRED);<br>    solidcircle(ballx, bally, 10);<br>    FlushBatchDraw();<br>    Sleep(5);<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-俄罗斯方块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -880,74 +943,6 @@ private void getCards(HBox pane) &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2021-03-24T09:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>hello world</p>
-<hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>bye world</p>
-<hr>
-<p>##参考文献</p>
-<p><a target="_blank" rel="noopener" href="http://www.codesheep.cn/">www.codesheep.cn</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
         </p>
       
 
