@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | Hexo</title>
+  <title>金山打字 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/page/2/index.html">
+  <meta name="description" content="金山打字（使用EasyX）#include&lt;stdio.h&gt;#include&lt;graphics.h&gt;#include&lt;conio.h&gt;#include&lt;time.h&gt;#include&lt;stdlib.h&gt;#include&lt;mmsystem.h&gt;&#x2F;&#x2F;#pragma comment(lib,”winmm.lib”) DWORD t1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="金山打字">
+<meta property="og:url" content="http://example.com/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="金山打字（使用EasyX）#include&lt;stdio.h&gt;#include&lt;graphics.h&gt;#include&lt;conio.h&gt;#include&lt;time.h&gt;#include&lt;stdlib.h&gt;#include&lt;mmsystem.h&gt;&#x2F;&#x2F;#pragma comment(lib,”winmm.lib”) DWORD t1">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-12T11:16:32.000Z">
+<meta property="article:modified_time" content="2021-05-12T11:17:55.700Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,106 +158,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-金山打字" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      金山打字
+    </h1>
+  
+
+        
+        <a href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/" class="archive-article-date">
+  	<time datetime="2021-05-12T11:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="金山打字（使用EasyX）"><a href="#金山打字（使用EasyX）" class="headerlink" title="金山打字（使用EasyX）"></a>金山打字（使用EasyX）</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;graphics.h&gt;<br>#include&lt;conio.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;mmsystem.h&gt;<br>//#pragma comment(lib,”winmm.lib”)</p>
+<p>DWORD t1, t2;<br>typedef struct Node {<br>    char ch;<br>    int x;<br>    int y;<br>    struct Node* pnext;<br>}LETTER;<br>LETTER* pLetter = NULL;<br>void CreateList() {<br>    pLetter = (LETTER*)malloc(sizeof(LETTER));<br>    pLetter-&gt;pnext = NULL;<br>}<br>void ADDLetterNode() {<br>    LETTER* pTemp = NULL;<br>    LETTER* pNew = NULL;<br>    pTemp = pLetter;<br>    while (pTemp-&gt;pnext != NULL) {<br>        pTemp = pTemp-&gt;pnext;<br>    }<br>    pNew = (LETTER*)malloc(sizeof(LETTER));<br>    pNew-&gt;ch = rand() % 26 + ‘A’;<br>    pNew-&gt;x = rand() % 620 + 10;<br>    pNew-&gt;y = 0;<br>    pNew-&gt;pnext = NULL;<br>    pTemp-&gt;pnext = pNew;<br>}<br>void Welcome() {<br>    initgraph(640, 480);<br>    //mciSendString(L”open C:\1.mp3 alias song”, NULL, 0, NULL);<br>    //mciSendString(L”play song repeat”, NULL, 0, NULL);<br>    IMAGE img;<br>    loadimage(&amp;img, L”C:\1.jpg”, 640, 480);<br>    putimage(0, 0, &amp;img);<br>    setbkmode(TRANSPARENT);<br>    settextcolor(YELLOW);<br>    settextstyle(50, 0, L”黑体”);<br>    outtextxy(175, 50, L”金山打字系统”);<br>    settextcolor(WHITE);<br>    settextstyle(20, 0, L”宋体”);<br>    outtextxy(60, 200, L”* C语言项目实战”);<br>    outtextxy(60, 240, L”* 版本：1.0”);<br>    outtextxy(60, 280, L”* 作者：wjh”);<br>    int colorR = 255;<br>    int colorG = 0;<br>    int speed = 5;<br>    while (!_kbhit()) {<br>        settextcolor(RGB(colorR, colorG, 150));<br>        outtextxy(250, 430, L”按任意键继续…”);<br>        colorR -= speed;<br>        colorG += speed;<br>        if (colorR &lt;= 0 || colorG &gt;= 255) {<br>            speed = -speed;<br>        }<br>        Sleep(20);<br>    }<br>    cleardevice();<br>}<br>void GamePlay() {<br>    settextcolor(WHITE);<br>    settextstyle(30, 0, L”宋体”);<br>    char keyLetter;<br>    LETTER* pTemp = NULL;<br>    CreateList();<br>    t1 = GetTickCount();<br>    while (1) {<br>        t2 = GetTickCount();<br>        if (t2 - t1 &gt; 1000) {<br>            ADDLetterNode();<br>            t1 = t2;<br>        }<br>        Sleep(25);<br>        pTemp = pLetter-&gt;pnext;<br>        cleardevice();<br>        while (pTemp != NULL) {<br>            outtextxy(pTemp-&gt;x, pTemp-&gt;y, pTemp-&gt;ch);<br>            pTemp-&gt;y++;<br>            pTemp = pTemp-&gt;pnext;<br>        }<br>        if (_kbhit()) {<br>            keyLetter = _getch();<br>            LETTER* pDes = pLetter-&gt;pnext;<br>            LETTER* pPre = pLetter;<br>            while (pDes != NULL) {<br>                if (pDes-&gt;ch == keyLetter) {<br>                    pPre-&gt;pnext = pDes-&gt;pnext;<br>                    free(pDes);<br>                    break;<br>                }<br>                else {<br>                    pDes = pDes-&gt;pnext;<br>                    pPre = pPre-&gt;pnext;<br>                }<br>            }<br>        }<br>    }<br>}<br>int main() {<br>    srand((unsigned int)time(NULL));<br>    Welcome();<br>    GamePlay();<br>    return 0;<br>}</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/" class="archive-article-date">
-  	<time datetime="2021-04-13T09:18:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">Certificate used to sign the license is not signed by JetBrains root certificate</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2021-03-24T09:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">打砖块</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/24/hello-world/" class="archive-article-date">
-  	<time datetime="2021-03-24T08:54:51.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/24/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -277,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

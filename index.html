@@ -156,6 +156,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-金山打字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/">金山打字</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/" class="archive-article-date">
+  	<time datetime="2021-05-12T11:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="金山打字（使用EasyX）"><a href="#金山打字（使用EasyX）" class="headerlink" title="金山打字（使用EasyX）"></a>金山打字（使用EasyX）</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;graphics.h&gt;<br>#include&lt;conio.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;mmsystem.h&gt;<br>//#pragma comment(lib,”winmm.lib”)</p>
+<p>DWORD t1, t2;<br>typedef struct Node {<br>    char ch;<br>    int x;<br>    int y;<br>    struct Node* pnext;<br>}LETTER;<br>LETTER* pLetter = NULL;<br>void CreateList() {<br>    pLetter = (LETTER*)malloc(sizeof(LETTER));<br>    pLetter-&gt;pnext = NULL;<br>}<br>void ADDLetterNode() {<br>    LETTER* pTemp = NULL;<br>    LETTER* pNew = NULL;<br>    pTemp = pLetter;<br>    while (pTemp-&gt;pnext != NULL) {<br>        pTemp = pTemp-&gt;pnext;<br>    }<br>    pNew = (LETTER*)malloc(sizeof(LETTER));<br>    pNew-&gt;ch = rand() % 26 + ‘A’;<br>    pNew-&gt;x = rand() % 620 + 10;<br>    pNew-&gt;y = 0;<br>    pNew-&gt;pnext = NULL;<br>    pTemp-&gt;pnext = pNew;<br>}<br>void Welcome() {<br>    initgraph(640, 480);<br>    //mciSendString(L”open C:\1.mp3 alias song”, NULL, 0, NULL);<br>    //mciSendString(L”play song repeat”, NULL, 0, NULL);<br>    IMAGE img;<br>    loadimage(&amp;img, L”C:\1.jpg”, 640, 480);<br>    putimage(0, 0, &amp;img);<br>    setbkmode(TRANSPARENT);<br>    settextcolor(YELLOW);<br>    settextstyle(50, 0, L”黑体”);<br>    outtextxy(175, 50, L”金山打字系统”);<br>    settextcolor(WHITE);<br>    settextstyle(20, 0, L”宋体”);<br>    outtextxy(60, 200, L”* C语言项目实战”);<br>    outtextxy(60, 240, L”* 版本：1.0”);<br>    outtextxy(60, 280, L”* 作者：wjh”);<br>    int colorR = 255;<br>    int colorG = 0;<br>    int speed = 5;<br>    while (!_kbhit()) {<br>        settextcolor(RGB(colorR, colorG, 150));<br>        outtextxy(250, 430, L”按任意键继续…”);<br>        colorR -= speed;<br>        colorG += speed;<br>        if (colorR &lt;= 0 || colorG &gt;= 255) {<br>            speed = -speed;<br>        }<br>        Sleep(20);<br>    }<br>    cleardevice();<br>}<br>void GamePlay() {<br>    settextcolor(WHITE);<br>    settextstyle(30, 0, L”宋体”);<br>    char keyLetter;<br>    LETTER* pTemp = NULL;<br>    CreateList();<br>    t1 = GetTickCount();<br>    while (1) {<br>        t2 = GetTickCount();<br>        if (t2 - t1 &gt; 1000) {<br>            ADDLetterNode();<br>            t1 = t2;<br>        }<br>        Sleep(25);<br>        pTemp = pLetter-&gt;pnext;<br>        cleardevice();<br>        while (pTemp != NULL) {<br>            outtextxy(pTemp-&gt;x, pTemp-&gt;y, pTemp-&gt;ch);<br>            pTemp-&gt;y++;<br>            pTemp = pTemp-&gt;pnext;<br>        }<br>        if (_kbhit()) {<br>            keyLetter = _getch();<br>            LETTER* pDes = pLetter-&gt;pnext;<br>            LETTER* pPre = pLetter;<br>            while (pDes != NULL) {<br>                if (pDes-&gt;ch == keyLetter) {<br>                    pPre-&gt;pnext = pDes-&gt;pnext;<br>                    free(pDes);<br>                    break;<br>                }<br>                else {<br>                    pDes = pDes-&gt;pnext;<br>                    pPre = pPre-&gt;pnext;<br>                }<br>            }<br>        }<br>    }<br>}<br>int main() {<br>    srand((unsigned int)time(NULL));<br>    Welcome();<br>    GamePlay();<br>    return 0;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-打砖块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -876,73 +940,6 @@ private void getCards(HBox pane) &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">Certificate used to sign the license is not signed by JetBrains root certificate</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/" class="archive-article-date">
-  	<time datetime="2021-04-13T09:18:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="以前使用破解版，现在使用教育优惠，出现报错"><a href="#以前使用破解版，现在使用教育优惠，出现报错" class="headerlink" title="以前使用破解版，现在使用教育优惠，出现报错"></a>以前使用破解版，现在使用教育优惠，出现报错</h2><p>第一步：先打开并进入idea主界面</p>
-<p>第二步：在Help列表中找到Edit Custom VM Options…</p>
-<p>第三步：删除#-javaagent:C:\jetbrains - agent.jar这种类型，可能一行，可能几行</p>
-<p>第四步：退出保存并重新打开</p>
-<p>第五步：在Help列表中找到Register登入申请许可证绑定的邮箱和密码</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/13/Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate/">展开全文 >></a>
         </p>
       
 
