@@ -156,6 +156,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-课后习题随机卡牌生成器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">一道简单的课后习题</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2021-04-15T09:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="随机生成四张卡牌器"><a href="#随机生成四张卡牌器" class="headerlink" title="随机生成四张卡牌器"></a>随机生成四张卡牌器</h2><p>package cn.campsg.gm;</p>
+<p>import javafx.application.Application;<br>import javafx.stage.Stage;<br>import javafx.scene.Scene;<br>import javafx.scene.image.Image;<br>import javafx.scene.image.ImageView;<br>import javafx.scene.layout.HBox;<br>import javafx.scene.layout.VBox;<br>import javafx.geometry.Insets;<br>import javafx.geometry.Pos;<br>import javafx.scene.control.Button;<br>import java.util.ArrayList;</p>
+<p>public class Main extends Application {<br>    @Override<br>    public void start(Stage primaryStage) {<br>        VBox vBox = new VBox();<br>        vBox.setAlignment(Pos.CENTER);<br>        vBox.setPadding(new Insets(5, 5, 5, 5));</p>
+<pre><code>    HBox hBox = new HBox(5);
+    hBox.setAlignment(Pos.CENTER);
+    hBox.setPadding(new Insets(5, 5, 5, 5));
+    getCards(hBox);
+
+    Button btRefresh = new Button(&quot;Refresh&quot;);
+
+    btRefresh.setOnAction(e -&gt; getCards(hBox));
+
+    vBox.getChildren().addAll(hBox, btRefresh);
+
+    Scene scene = new Scene(vBox);
+    primaryStage.setTitle(&quot;Exercise_15_01&quot;);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+&#125;
+private void getCards(HBox pane) &#123;
+    pane.getChildren().clear();
+    ArrayList&lt;Integer&gt; cards = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; 52; i++) &#123;
+        cards.add(i + 1);
+    &#125;
+
+    java.util.Collections.shuffle(cards);
+
+    for (int i = 0; i &lt; 4; i++) &#123;
+        pane.getChildren().add(new ImageView(new Image(&quot;file:/C:/Users/86178/Desktop/card/&quot; +
+                cards.get(i) + &quot;.png&quot;)));
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Certificate-used-to-sign-the-license-is-not-signed-by-JetBrains-root-certificate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
