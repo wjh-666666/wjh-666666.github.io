@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>扫雷（简易版） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="扫雷（无鼠标事件）#include &lt;time.h&gt;#include using namespace std;#define ROW 9#define COL 9#define ROWS ROW+2#define COLS COL+2#define MINE 10void InitBoard(char board[ROWS][COLS], int rows, int cols, cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扫雷（简易版）">
+<meta property="og:url" content="http://example.com/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="扫雷（无鼠标事件）#include &lt;time.h&gt;#include using namespace std;#define ROW 9#define COL 9#define ROWS ROW+2#define COLS COL+2#define MINE 10void InitBoard(char board[ROWS][COLS], int rows, int cols, cha">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-18T12:22:13.000Z">
+<meta property="article:modified_time" content="2021-05-18T12:24:18.455Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,295 +158,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-扫雷（简易版）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      扫雷（简易版）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/" class="archive-article-date">
+
+        
+        <a href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/" class="archive-article-date">
   	<time datetime="2021-05-18T12:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/">扫雷（简易版）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="扫雷（无鼠标事件）"><a href="#扫雷（无鼠标事件）" class="headerlink" title="扫雷（无鼠标事件）"></a>扫雷（无鼠标事件）</h2><p>#include &lt;time.h&gt;<br>#include <iostream><br>using namespace std;<br>#define ROW 9<br>#define COL 9<br>#define ROWS ROW+2<br>#define COLS COL+2<br>#define MINE 10<br>void InitBoard(char board[ROWS][COLS], int rows, int cols, char set);<br>void DisplayBoard(char board[ROWS][COLS], int row, int col);<br>void SetMine(char board[ROWS][COLS], int row, int col);<br>int Get_mine_count(char mine[ROWS][COLS], int x, int y);<br>void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);<br>void LaunchMine(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y);<br>int IsWin(char show[ROWS][COLS], int row, int col);<br>void game()<br>{<br>    char mine[ROWS][COLS];<br>    char show[ROWS][COLS];<br>    InitBoard(mine, ROWS, COLS, ‘0’);<br>    InitBoard(show, ROWS, COLS, ‘<em>‘);<br>    DisplayBoard(show, ROW, COL);<br>    SetMine(mine, ROW, COL);<br>    FindMine(mine, show, ROW, COL);<br>}<br>void menu()<br>{<br>    system(“cls”);<br>    printf(“——————————\n”);<br>    printf(“———– 1. play ———-\n”);<br>    printf(“———– 0. exit ———-\n”);<br>    printf(“——————————\n”);<br>}<br>int main()<br>{<br>    int input = 0;<br>    srand((unsigned int)time(NULL));<br>    do<br>    {<br>        menu();<br>        cout &lt;&lt; “请选择：”;<br>        cin &gt;&gt; input;<br>        switch (input)<br>        {<br>        case 1:<br>            game();<br>            break;<br>        case 0:<br>            cout &lt;&lt; “退出游戏！” &lt;&lt; endl;<br>            break;<br>        default:<br>            cout &lt;&lt; “选择错误，请重新选择！” &lt;&lt; endl;<br>            break;<br>        }<br>    } while (input);<br>    return 0;<br>}<br>void InitBoard(char board[ROWS][COLS], int rows, int cols, char set)<br>{<br>    for (int i = 0; i &lt; rows; i++)<br>    {<br>        for (int j = 0; j &lt; cols; j++)<br>        {<br>            board[i][j] = set;<br>        }<br>    }<br>}<br>void DisplayBoard(char board[ROWS][COLS], int row, int col)<br>{<br>    system(“cls”);<br>    for (int i = 0; i &lt;= col; i++)<br>        cout &lt;&lt; i &lt;&lt; “ “;<br>    cout &lt;&lt; endl;<br>    for (int i = 1; i &lt;= row; i++)<br>    {<br>        cout &lt;&lt; i &lt;&lt; “ “;<br>        for (int j = 1; j &lt;= col; j++)<br>        {<br>            cout &lt;&lt; board[i][j] &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>void SetMine(char board[ROWS][COLS], int row, int col)<br>{<br>    int count = MINE;<br>    while (count)<br>    {<br>        int x = rand() % row + 1;<br>        int y = rand() % col + 1;<br>        if (board[x][y] == ‘0’)<br>        {<br>            board[x][y] = ‘1’;<br>            count–;<br>        }<br>    }<br>}<br>int Get_mine_count(char mine[ROWS][COLS], int x, int y)<br>{<br>    return mine[x - 1][y + 1] + mine[x][y + 1] + mine[x + 1][y + 1] + mine[x - 1][y] +<br>        mine[x + 1][y] + mine[x - 1][y - 1] + mine[x][y - 1] + mine[x + 1][y - 1] - 8 * ‘0’;<br>}<br>void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)<br>{<br>    int x = 0;<br>    int y = 0;<br>    while (1)<br>    {<br>        cout &lt;&lt; “请输入排雷的坐标：”;<br>        cin &gt;&gt; x &gt;&gt; y;;<br>        if (x &gt;= 1 &amp;&amp; x &lt;= row &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= col)<br>        {<br>            if (show[x][y] == ‘</em>‘)<br>            {<br>                if (mine[x][y] == ‘1’)<br>                {<br>                    DisplayBoard(mine, row, col);<br>                    cout &lt;&lt; “很遗憾，你被炸死了！” &lt;&lt; endl;<br>                    system(“pause”);<br>                    break;<br>                }else<br>                {<br>                    int count = Get_mine_count(mine, x, y);<br>                    show[x][y] = count + ‘0’;<br>                    if (count == 0)<br>                    {<br>                        LaunchMine(mine, show, x, y);<br>                    }<br>                    DisplayBoard(show, ROW, COL);<br>                }<br>            }else<br>            {<br>                cout &lt;&lt; “输入坐标已排过雷，请重新输入！” &lt;&lt; endl;<br>            }<br>        }else<br>        {<br>            cout &lt;&lt; “输入坐标非法，请重新输入！” &lt;&lt; endl;<br>        }<br>        if (IsWin(show, ROW, COL) == MINE)<br>        {</p>
+<pre><code>        DisplayBoard(mine, row, col);
+        cout &lt;&lt; &quot;恭喜你，排雷成功！&quot; &lt;&lt; endl;
+        system(&quot;pause&quot;);
+        break;
+    &#125;
 
-        <div class="article-info info-on-right">
-          
-          
+&#125;
+</code></pre>
+<p>}<br>int IsWin(char show[ROWS][COLS], int row, int col)<br>{<br>    int count = 0;<br>    for (int i = 1; i &lt;= row; i++)<br>    {<br>        for (int j = 1; j &lt;= col; j++)<br>        {<br>            if (show[i][j] == ‘<em>‘)<br>            {<br>                count++;<br>            }<br>        }<br>    }<br>    return count;<br>}<br>void LaunchMine(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y)<br>{<br>    if (x &gt;= 1 &amp;&amp; x &lt;= ROW &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= COL)<br>    {<br>        int count = Get_mine_count(mine, x, y);<br>        if (count == 0)<br>        {<br>            show[x][y] = ‘ ‘;<br>            if (show[x - 1][y - 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x - 1, y - 1);<br>            if (show[x - 1][y] == ‘<em>‘)<br>                LaunchMine(mine, show, x - 1, y);<br>            if (show[x - 1][y + 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x - 1, y + 1);<br>            if (show[x][y - 1] == ‘<em>‘)<br>                LaunchMine(mine, show, x, y - 1);<br>            if (show[x][y + 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x, y + 1);<br>            if (show[x + 1][y - 1] == ‘<em>‘)<br>                LaunchMine(mine, show, x + 1, y - 1);<br>            if (show[x + 1][y] == ‘</em>‘)<br>                LaunchMine(mine, show, x + 1, y);<br>            if (show[x + 1][y + 1] == ‘*’)<br>                LaunchMine(mine, show, x + 1, y + 1);<br>        }else<br>        {<br>            show[x][y] = count + ‘0’;<br>        }<br>    }<br>}</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-05-18T08:34:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vs2019问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/">vs2019问题</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/17/%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93/" class="archive-article-date">
-  	<time datetime="2021-05-17T13:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/17/%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93/">数字华容道</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/" class="archive-article-date">
-  	<time datetime="2021-05-12T11:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/12/%E9%87%91%E5%B1%B1%E6%89%93%E5%AD%97/">金山打字</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2021-05-11T10:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/11/%E6%89%93%E7%A0%96%E5%9D%97/">打砖块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2021-05-07T10:17:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/">俄罗斯方块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2021-05-06T11:35:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">文本编辑器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/" class="archive-article-date">
-  	<time datetime="2021-05-06T10:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">日期时间显示</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2021-04-28T11:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">细胞自动机</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" class="archive-article-date">
-  	<time datetime="2021-04-27T12:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">IDEA下载打不开</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -466,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
