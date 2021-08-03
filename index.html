@@ -60,7 +60,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			<a>总文章数 16</a>
+    			<a>总文章数 17</a>
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,69 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-回溯算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-08-03T10:31:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="回溯算法（python）"><a href="#回溯算法（python）" class="headerlink" title="回溯算法（python）"></a>回溯算法（python）</h2><p>nums=[[0,0,0,0,0,0,0],<br>      [0,0,0,1,0,1,0],<br>      [0,1,0,0,0,2,0],<br>      [0,0,2,0,1,0,0],<br>      [0,1,1,0,0,0,0],<br>      [0,2,0,0,0,0,0],<br>      [0,0,0,0,0,0,0]]<br>def path_que(nums):<br>    res=[]<br>    choices=[[-1,0],[1,0],[0,-1],[0,1]]<br>    n=len(nums)<br>    def trace(path,choices,x,y,tx,ty,target):<br>        if x==tx and y==ty and target==3:<br>            res.append(list(path))<br>            return<br>        for choice in choices:<br>            if x+choice[0]&lt;0 or x+choice[0]&gt;=n or y+choice[1]&lt;0 or y+choice[1]&gt;=n:continue<br>            if nums[x+choice[0]][y+choice[1]]==1:continue<br>            if [x+choice[0],y+choice[1]] in path:continue<br>            if nums[x+choice[0]][y+choice[1]]==2:target+=1<br>            path.append([x+choice[0],y+choice[1]])<br>            trace(path,choices,x+choice[0],y+choice[1],tx,ty,target)<br>            path.pop()<br>            if nums[x+choice[0]][y+choice[1]]==2:target-=1<br>    trace([[0,0]],choices,0,0,5,5,0)<br>    return res<br>content=path_que(nums)<br>print(len(content))<br>mid=[len(t) for t in content]<br>print(min(mid))<br>for item in content:<br>    if len(item)==min(mid):<br>        print(item)<br>        break</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-扫雷（简易版）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -873,72 +936,6 @@ public static void main(String[] args)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-IDEA下载打不开" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">IDEA下载打不开</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" class="archive-article-date">
-  	<time datetime="2021-04-27T12:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="IDEA下载后打不开，不知道问题都束手无策"><a href="#IDEA下载后打不开，不知道问题都束手无策" class="headerlink" title="IDEA下载后打不开，不知道问题都束手无策"></a>IDEA下载后打不开，不知道问题都束手无策</h2><p>第一步：找到安装的idea文件所在位置</p>
-<p>第二步：在bin目录下找到idea.bat</p>
-<p>第三步：在文件的末尾加上pause</p>
-<p>第四步：运行可得知错误（本人问题是valid jvm installation）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">展开全文 >></a>
         </p>
       
 

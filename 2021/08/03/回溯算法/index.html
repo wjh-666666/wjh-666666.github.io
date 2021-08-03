@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>IDEA下载打不开 | Hexo</title>
+  <title>回溯算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IDEA下载后打不开，不知道问题都束手无策第一步：找到安装的idea文件所在位置 第二步：在bin目录下找到idea.bat 第三步：在文件的末尾加上pause 第四步：运行可得知错误（本人问题是valid jvm installation）">
+  <meta name="description" content="回溯算法（python）nums&#x3D;[[0,0,0,0,0,0,0],      [0,0,0,1,0,1,0],      [0,1,0,0,0,2,0],      [0,0,2,0,1,0,0],      [0,1,1,0,0,0,0],      [0,2,0,0,0,0,0],      [0,0,0,0,0,0,0]]def path_que(nums):    res&#x3D;[]    c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IDEA下载打不开">
-<meta property="og:url" content="http://example.com/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/index.html">
+<meta property="og:title" content="回溯算法">
+<meta property="og:url" content="http://example.com/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IDEA下载后打不开，不知道问题都束手无策第一步：找到安装的idea文件所在位置 第二步：在bin目录下找到idea.bat 第三步：在文件的末尾加上pause 第四步：运行可得知错误（本人问题是valid jvm installation）">
+<meta property="og:description" content="回溯算法（python）nums&#x3D;[[0,0,0,0,0,0,0],      [0,0,0,1,0,1,0],      [0,1,0,0,0,2,0],      [0,0,2,0,1,0,0],      [0,1,1,0,0,0,0],      [0,2,0,0,0,0,0],      [0,0,0,0,0,0,0]]def path_que(nums):    res&#x3D;[]    c">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-27T12:10:07.000Z">
-<meta property="article:modified_time" content="2021-04-27T12:15:42.077Z">
+<meta property="article:published_time" content="2021-08-03T10:31:10.000Z">
+<meta property="article:modified_time" content="2021-08-03T10:32:24.198Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -165,30 +165,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-IDEA下载打不开" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-回溯算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      IDEA下载打不开
+      回溯算法
     </h1>
   
 
         
-        <a href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" class="archive-article-date">
-  	<time datetime="2021-04-27T12:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
+        <a href="/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-08-03T10:31:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="IDEA下载后打不开，不知道问题都束手无策"><a href="#IDEA下载后打不开，不知道问题都束手无策" class="headerlink" title="IDEA下载后打不开，不知道问题都束手无策"></a>IDEA下载后打不开，不知道问题都束手无策</h2><p>第一步：找到安装的idea文件所在位置</p>
-<p>第二步：在bin目录下找到idea.bat</p>
-<p>第三步：在文件的末尾加上pause</p>
-<p>第四步：运行可得知错误（本人问题是valid jvm installation）</p>
+        <h2 id="回溯算法（python）"><a href="#回溯算法（python）" class="headerlink" title="回溯算法（python）"></a>回溯算法（python）</h2><p>nums=[[0,0,0,0,0,0,0],<br>      [0,0,0,1,0,1,0],<br>      [0,1,0,0,0,2,0],<br>      [0,0,2,0,1,0,0],<br>      [0,1,1,0,0,0,0],<br>      [0,2,0,0,0,0,0],<br>      [0,0,0,0,0,0,0]]<br>def path_que(nums):<br>    res=[]<br>    choices=[[-1,0],[1,0],[0,-1],[0,1]]<br>    n=len(nums)<br>    def trace(path,choices,x,y,tx,ty,target):<br>        if x==tx and y==ty and target==3:<br>            res.append(list(path))<br>            return<br>        for choice in choices:<br>            if x+choice[0]&lt;0 or x+choice[0]&gt;=n or y+choice[1]&lt;0 or y+choice[1]&gt;=n:continue<br>            if nums[x+choice[0]][y+choice[1]]==1:continue<br>            if [x+choice[0],y+choice[1]] in path:continue<br>            if nums[x+choice[0]][y+choice[1]]==2:target+=1<br>            path.append([x+choice[0],y+choice[1]])<br>            trace(path,choices,x+choice[0],y+choice[1],tx,ty,target)<br>            path.pop()<br>            if nums[x+choice[0]][y+choice[1]]==2:target-=1<br>    trace([[0,0]],choices,0,0,5,5,0)<br>    return res<br>content=path_que(nums)<br>print(len(content))<br>mid=[len(t) for t in content]<br>print(min(mid))<br>for item in content:<br>    if len(item)==min(mid):<br>        print(item)<br>        break</p>
 
       
 
@@ -268,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/28/%E7%BB%86%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          细胞自动机
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">贪吃蛇</div>
+    <a href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">扫雷（简易版）</div>
       <i class="icon-circle-right"></i>
     </a>
   
