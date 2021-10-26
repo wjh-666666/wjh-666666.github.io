@@ -60,7 +60,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			<a>总文章数 18</a>
+    			<a>总文章数 21</a>
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,333 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-俄罗斯方块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/">俄罗斯方块</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2021-05-07T10:17:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="俄罗斯方块"><a href="#俄罗斯方块" class="headerlink" title="俄罗斯方块"></a>俄罗斯方块</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;windows.h&gt;<br>#include&lt;conio.h&gt;<br>#define SPACE 32<br>#define LEFT  75<br>#define RIGHT 77<br>#define DOWN 80<br>#define ESC 27<br>#define Wall 2<br>#define Box 1<br>#define Kong 0<br>#define FACE_X 29<br>#define FACE_Y 20<br>void gotoxy(int x,int y);<br>int color(int c);<br>void hidden_cursor();<br>void init_interface();<br>void init_dia();<br>void draw_dia(int base,int space_c,int x,int y);<br>void draw_kong(int base,int space_c,int x,int y);<br>int pd(int n,int space_c,int x,int y);<br>void start_game();<br>int xc();<br>void read_file();<br>void write_file();<br>int grade=0;<br>int max=0;<br>int nn=0;<br>struct Face<br>{<br>    int data[FACE_X][FACE_Y+10];<br>    int color[FACE_X][FACE_Y+10];<br>}face;<br>typedef struct Diamonds<br>{<br>    int space[4][4];<br>}Dia;<br>Dia dia[7][4];<br>int main()<br>{<br>    system(“cls”);<br>    system(“title 俄罗斯方块”);<br>    color(7);<br>    system(“mode con cols=60 lines=30”);<br>    hidden_cursor();<br>    srand(time(NULL));<br>    read_file();<br>    grade=0;<br>    init_interface();<br>    init_dia();<br>    nn=rand()%7;<br>    while(1)<br>    {<br>        start_game();<br>    }<br>    return 0;<br>}<br>void start_game()<br>{   int n,ch,t=0,x=0,y=FACE_Y/2-2,i,j;<br>    int space_c=0;<br>    draw_kong(nn,space_c,4,FACE_Y+3);<br>    n=nn;<br>    nn=rand()%7;<br>    color(nn);<br>    draw_dia(nn,space_c,4,FACE_Y+3);<br>    while(1)<br>    {<br>        color(n);<br>        draw_dia(n,space_c,x,y);<br>        if(t==0)<br>            t=15000;<br>        while(–t)<br>        {<br>            if(kbhit()!=0)<br>                break;<br>        }<br>        if(t==0)<br>        {<br>            if(pd(n,space_c,x+1,y)==1)<br>            {<br>                draw_kong(n,space_c,x,y);<br>                x++;<br>            }<br>            else<br>            {<br>                for(i=0;i&lt;4;i++)<br>                {<br>                    for(j=0;j&lt;4;j++)<br>                    {<br>                        if(dia[n][space_c].space[i][j]==1)<br>                        {<br>                            face.data[x+i][y+j]=Box;<br>                            face.color[x+i][y+j]=n;<br>                            while(xc());<br>                        }<br>                    }<br>                }<br>                return;<br>            }<br>        }<br>        else<br>        {<br>            ch=getch();<br>            switch(ch)<br>            {<br>            case LEFT:  if(pd(n,space_c,x,y-1)==1)<br>                        {<br>                            draw_kong(n,space_c,x,y);<br>                               y–;<br>                        }<br>                       break;<br>            case RIGHT: if(pd(n,space_c,x,y+1)==1)<br>                        {<br>                            draw_kong(n,space_c,x,y);<br>                            y++;<br>                        }<br>                        break;<br>            case DOWN:  if(pd(n,space_c,x+1,y)==1)<br>                        {<br>                            draw_kong(n,space_c,x,y);<br>                            x++;<br>                        }<br>                        break;<br>            case SPACE: if(pd(n,(space_c+1)%4,x+1,y)==1)<br>                        {<br>                            draw_kong(n,space_c,x,y);<br>                            space_c=(space_c+1)%4;<br>                        }<br>                        break;<br>            case ESC  : system(“cls”);<br>                        gotoxy(FACE_X/2,FACE_Y);<br>                        printf(“—游戏结束!—\n\n”);<br>                        gotoxy(FACE_X/2+2,FACE_Y);<br>                        printf(“—按任意键退出!—\n”);<br>                        getch();<br>                        exit(0);<br>                        break;<br>            case  ‘R’:<br>            case  ‘r’:  main();<br>                        exit(0);<br>            case  ‘S’:<br>            case  ‘s’:  while(1)<br>                        {<br>                            if(kbhit()!=0)<br>                            break;<br>                        }<br>                        break;<br>            }<br>        }<br>    }<br>}<br>int xc()<br>{<br>    int i,j,k,sum;<br>    for(i=FACE_X-2;i&gt;4;i–)<br>    {<br>        sum=0;<br>        for(j=1;j&lt;FACE_Y-1;j++)<br>        {<br>            sum+=face.data[i][j];<br>        }<br>        if(sum==0)<br>            break;<br>        if(sum==FACE_Y-2)<br>        {<br>            grade+=100;<br>            color(7);<br>            gotoxy(FACE_X-4,2<em>FACE_Y+2);<br>            printf(“分数：%d”,grade);<br>            for(j=1;j&lt;FACE_Y-1;j++)<br>            {<br>                face.data[i][j]=Kong;<br>                gotoxy(i,2*j);<br>                printf(“  “);<br>            }<br>            for(j=i;j&gt;1;j–)<br>            {<br>                sum=0;<br>                for(k=1;k&lt;FACE_Y-1;k++)<br>                {<br>                    sum+=face.data[j-1][k]+face.data[j][k];<br>                    face.data[j][k]=face.data[j-1][k];<br>                    if(face.data[j][k]==Kong)<br>                    {<br>                        gotoxy(j,2*k);<br>                        printf(“  “);<br>                    }<br>                    else<br>                    {<br>                        gotoxy(j,2*k);<br>                        color(face.color[j][k]);<br>                        printf(“■”);<br>                    }<br>                }<br>                if(sum==0)<br>                    return 1;<br>            }<br>        }<br>    }<br>    for(i=1;i&lt;FACE_Y-1;i++)<br>    {<br>        if(face.data[1][i]==Box)<br>        {<br>            char n;<br>            Sleep(2000);<br>            system(“cls”);<br>            color(7);<br>            gotoxy(FACE_X/2-2,2*(FACE_Y/3));<br>            if(grade&gt;max)<br>            {<br>                printf(“恭喜您打破记录，目前最高纪录为：%d”,grade);<br>                write_file();<br>            }<br>            else if(grade==max)<br>                printf(“与纪录持平，请突破你的极限！”);<br>            else<br>                printf(“请继续努力，你与最高记录只差：%d”,max-grade);<br>            gotoxy(FACE_X/2,2</em>(FACE_Y/3));<br>            printf(“GAME OVER!\n”);<br>            do<br>            {<br>                gotoxy(FACE_X/2+2,2*(FACE_Y/3));<br>                printf(“是否重新开始游戏(y/n): “);<br>                scanf(“%c”,&amp;n);<br>                gotoxy(FACE_X/2+4,2*(FACE_Y/3));<br>                if(n!=’n’ &amp;&amp; n!=’N’ &amp;&amp; n!=’y’ &amp;&amp; n!=’Y’)<br>                    printf(“输入错误，请重新输入!”);<br>                else<br>                    break;<br>            }while(1);<br>            if(n==’n’ || n==’N’)<br>            {<br>                gotoxy(FACE_X/2+4,2*(FACE_Y/3));<br>                printf(“按任意键退出游戏！”);<br>                exit(0);<br>            }<br>            else if(n==’y’ || n==’Y’)<br>                main();<br>        }<br>    }<br>    return 0;<br>}<br>void read_file()<br>{<br>    FILE <em>fp;<br>    fp=fopen(“俄罗斯方块记录.txt”,”r+”);<br>    if(fp==NULL)<br>    {<br>        fp=fopen(“俄罗斯方块记录.txt”,”w+”);<br>        fwrite(&amp;max,sizeof(int),1,fp);<br>    }<br>    fseek(fp,0,0);<br>    fread(&amp;max,sizeof(int),1,fp);<br>    fclose(fp);<br>}<br>void write_file()<br>{<br>    FILE <em>fp;<br>    fp=fopen(“俄罗斯方块记录.txt”,”r+”);<br>    fwrite(&amp;grade,sizeof(int),1,fp);<br>    fclose(fp);<br>}<br>int pd(int n,int space_c,int x,int y)<br>{<br>    int i,j;<br>    for(i=0;i&lt;4;i++)<br>    {<br>        for(j=0;j&lt;4;j++)<br>        {<br>            if(dia[n][space_c].space[i][j]==0)<br>                continue;<br>               else if(face.data[x+i][y+j]==Wall||face.data[x+i][y+j]==Box)<br>                   return 0;<br>        }<br>    }<br>    return 1;<br>}<br>void draw_kong(int base,int space_c,int x,int y)<br>{<br>    int i,j;<br>    for(i=0;i&lt;4;i++)<br>    {<br>        for(j=0;j&lt;4;j++)<br>        {<br>            gotoxy(x+i,2</em>(y+j));<br>            if(dia[base][space_c].space[i][j]==1)<br>                printf(“  “);<br>        }<br>    }<br>}<br>void draw_dia(int base,int space_c,int x,int y)<br>{<br>    int i,j;<br>    for(i=0;i&lt;4;i++)<br>    {<br>        for(j=0;j&lt;4;j++)<br>        {<br>            gotoxy(x+i,2</em>(y+j));<br>            if(dia[base][space_c].space[i][j]==1)<br>                printf(“■”);<br>        }<br>    }<br>}<br>void init_dia()<br>{<br>    int i,j,k,z;<br>    int tmp[4][4];<br>    for(i=0;i&lt;3;i++)<br>        dia[0][0].space[1][i]=1;<br>    dia[0][0].space[2][1]=1;<br>    for(i=1;i&lt;4;i++)<br>        dia[1][0].space[i][1]=1;<br>    dia[1][0].space[1][2]=1;<br>    for(i=1;i&lt;4;i++)<br>        dia[2][0].space[i][2]=1;<br>    dia[2][0].space[1][1]=1;<br>    for(i=0;i&lt;2;i++)<br>    {<br>        dia[3][0].space[1][i]=1;<br>        dia[3][0].space[2][i+1]=1;<br>        dia[4][0].space[1][i+1]=1;<br>        dia[4][0].space[2][i]=1;<br>        dia[5][0].space[1][i+1]=1;<br>        dia[5][0].space[2][i+1]=1;<br>    }<br>    for(i=0;i&lt;4;i++)<br>        dia[6][0].space[i][2]=1;<br>    for(i=0;i&lt;7;i++)<br>    {<br>        for(z=0;z&lt;3;z++)<br>        {<br>            for(j=0;j&lt;4;j++)<br>            {<br>                for(k=0;k&lt;4;k++)<br>                {<br>                  tmp[j][k]=dia[i][z].space[j][k];<br>                }<br>            }<br>            for(j=0;j&lt;4;j++)<br>            {<br>                for(k=0;k&lt;4;k++)<br>                {<br>                  dia[i][z+1].space[j][k]=tmp[4-k-1][j];<br>                }<br>            }<br>        }<br>    }<br>}<br>void init_interface()<br>{<br>    int i,j;<br>    for(i=0;i&lt;FACE_X;i++)<br>    {<br>        for(j=0;j&lt;FACE_Y+10;j++)<br>        {<br>            if(j==0||j==FACE_Y-1||j==FACE_Y+9)<br>            {<br>                face.data[i][j]=Wall;<br>                gotoxy(i,2<em>j);<br>                printf(“■”);<br>            }<br>            else if(i==FACE_X-1)<br>            {<br>                face.data[i][j]=Box;<br>                gotoxy(i,2</em>j);<br>                printf(“■”);<br>            }<br>            else<br>                face.data[i][j]=Kong;<br>        }<br>    }<br>    gotoxy(FACE_X-18,2<em>FACE_Y+2);<br>    printf(“左移：←”);<br>    gotoxy(FACE_X-16,2</em>FACE_Y+2);<br>    printf(“右移：→”);<br>    gotoxy(FACE_X-14,2<em>FACE_Y+2);<br>    printf(“旋转：space”);<br>    gotoxy(FACE_X-12,2</em>FACE_Y+2);<br>    printf(“暂停: S”);<br>    gotoxy(FACE_X-10,2<em>FACE_Y+2);<br>    printf(“退出: ESC”);<br>    gotoxy(FACE_X-8,2</em>FACE_Y+2);<br>    printf(“重新开始：R”);<br>    gotoxy(FACE_X-6,2<em>FACE_Y+2);<br>    printf(“最高纪录：%d”,max);<br>    gotoxy(FACE_X-4,2</em>FACE_Y+2);<br>    printf(“分数：%d”,grade);<br>}<br>void gotoxy(int x,int y)<br>{<br>    COORD coord;<br>    coord.X=y;<br>    coord.Y=x;<br>    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);<br>}<br>void hidden_cursor()<br>{<br>  HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);<br>  CONSOLE_CURSOR_INFO info;<br>  GetConsoleCursorInfo(hOut,&amp;info);<br>  info.bVisible=0;<br>  SetConsoleCursorInfo(hOut,&amp;info);<br>}<br>int color(int c)<br>{<br>    switch(c)<br>    {<br>        case 0: c=9;break;<br>        case 1:<br>        case 2: c=12;break;<br>        case 3:<br>        case 4: c=14;break;<br>        case 5: c=10;break;<br>        case 6: c=13;break;<br>        default: c=7;break;<br>    }<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), c);<br>    return 0;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/07/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-文本编辑器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">文本编辑器</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2021-05-06T11:35:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>package cn.campsg.gm;</p>
+<p>import java.awt.<em>;<br>import java.awt.event.</em>;<br>import java.io.<em>;<br>import javax.swing.</em>;<br>import javax.swing.text.*;</p>
+<p>public class Main extends JFrame {<br>    public JTextPane textPane = new JTextPane();<br>    public JFileChooser filechooser = new JFileChooser();<br>    public Main()<br>    {<br>        super(“文本编辑器”);<br>        Action[] actions=<br>            {<br>                new NewAction(),<br>                new OpenAction(),<br>                new SaveAction(),<br>                new CutAction(),<br>                new CopyAction(),<br>                new PasteAction(),<br>                new AboutAction(),<br>                new ExitAction(),<br>                new HelpAction()<br>            };<br>        setJMenuBar(createJMenuBar(actions));<br>        Container container=getContentPane();<br>        container.add(textPane, BorderLayout.CENTER);<br>        JScrollPane jsp=new JScrollPane(textPane);<br>        //jsp.setBounds(?, ?, ?, ?);<br>        jsp.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);<br>        container.add(jsp);<br>        setSize(600,700);<br>        setVisible(true);<br>        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>    }<br>    private JMenuBar createJMenuBar(Action[] actions)<br>    {<br>        JMenuBar menubar=new JMenuBar();<br>        JMenu menuFile=new JMenu(“文件(F)”);<br>        JMenu menuEdit=new JMenu(“编辑(E)”);<br>        JMenu menuAbout=new JMenu(“帮助(H)”);<br>        menuFile.add(new JMenuItem(actions[0]));<br>        menuFile.add(new JMenuItem(actions[1]));<br>        menuFile.add(new JMenuItem(actions[2]));<br>        menuFile.add(new JMenuItem(actions[7]));<br>        menuEdit.add(new JMenuItem(actions[3]));<br>        menuEdit.add(new JMenuItem(actions[4]));<br>        menuEdit.add(new JMenuItem(actions[5]));<br>        menuAbout.add(new JMenuItem(actions[6]));<br>        menuAbout.add(new JMenuItem(actions[8]));<br>        menubar.add(menuFile);<br>        menubar.add(menuEdit);<br>        menubar.add(menuAbout);<br>        return menubar;<br>    }<br>    class NewAction extends AbstractAction<br>    {<br>        public NewAction()<br>        {<br>            super(“新建(N)     Ctrl+N”);<br>        }</p>
+<pre><code>    public void actionPerformed(ActionEvent e)
+    &#123;
+        //new Main();
+        textPane.setDocument(new DefaultStyledDocument());
+    &#125;
+&#125;
+
+class OpenAction extends AbstractAction
+&#123;
+    public OpenAction()
+    &#123;
+        super(&quot;打开(O)     Ctrl+O&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        int i=filechooser.showOpenDialog(Main.this);
+        if(i==JFileChooser.APPROVE_OPTION)
+        &#123;
+            File f=filechooser.getSelectedFile();
+            try
+            &#123;
+                InputStream is=new FileInputStream(f);
+                textPane.read(is, &quot;d&quot;);
+            &#125;
+            catch(Exception ex)
+            &#123;
+                ex.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+class SaveAction extends AbstractAction
+&#123;
+    public SaveAction()
+    &#123;
+        super(&quot;保存(S)     Ctrl+S&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        int i=filechooser.showSaveDialog(Main.this);
+        if(i==JFileChooser.APPROVE_OPTION)
+        &#123;
+            File f=filechooser.getSelectedFile();
+            try
+            &#123;
+                FileOutputStream out=new FileOutputStream(f);
+                out.write(textPane.getText().getBytes());
+            &#125;
+            catch(Exception ex)
+            &#123;
+                ex.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+class ExitAction extends AbstractAction
+&#123;
+    public ExitAction()
+    &#123;
+        super(&quot;退出(X)&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        dispose();
+    &#125;
+&#125;
+
+class CutAction extends AbstractAction
+&#123;
+    public CutAction()
+    &#123;
+        super(&quot;剪切(T)     Ctrl+X&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.cut();
+    &#125;
+&#125;
+
+class CopyAction extends AbstractAction
+&#123;
+    public CopyAction()
+    &#123;
+        super(&quot;复制(C)     Ctrl+C&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.copy();
+    &#125;
+&#125;
+
+class PasteAction extends AbstractAction
+&#123;
+    public PasteAction()
+    &#123;
+        super(&quot;粘贴(P)     Ctrl+V&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        textPane.paste();
+    &#125;
+&#125;
+
+class AboutAction extends AbstractAction
+&#123;
+    public AboutAction()
+    &#123;
+        super(&quot;关于编辑器(A)&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        JOptionPane.showMessageDialog(Main.this,&quot;实现记事本的一些基本功能&quot;,&quot;关于&quot;,JOptionPane.PLAIN_MESSAGE);
+    &#125;
+&#125;
+
+class HelpAction extends AbstractAction
+&#123;
+    public HelpAction()
+    &#123;
+        super(&quot;联系开发者&quot;);
+    &#125;
+    public void actionPerformed(ActionEvent e)
+    &#123;
+        JOptionPane.showMessageDialog(Main.this,&quot;203204350@qq.com&quot;,&quot;开发者邮箱&quot;,JOptionPane.PLAIN_MESSAGE);
+    &#125;
+&#125;
+
+public static void main(String[] args)
+&#123;
+    new Main();
+&#125;
+</code></pre>
+<p>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/06/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-日期时间显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">日期时间显示</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/" class="archive-article-date">
+  	<time datetime="2021-05-06T10:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="日期时间显示"><a href="#日期时间显示" class="headerlink" title="日期时间显示"></a>日期时间显示</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;</p>
+<p>void PrintTime()<br>{<br>    time_t timep;<br>    struct tm* p;<br>    time(&amp;timep);<br>    p=gmtime(&amp;timep);<br>    printf(“| Data：%d-%d-%d  |”,1900+p-&gt;tm_year,1+p-&gt;tm_mon,p-&gt;tm_mday);<br>    printf(“ Today is “);<br>    switch (p-&gt;tm_wday)<br>    {<br>        case 7:<br>            printf(“Sunday |”);<br>            break;<br>        case 1:<br>            printf(“Monday |”);<br>            break;<br>        case 2:<br>            printf(“Tuesday |”);<br>            break;<br>        case 3:<br>            printf(“Wednesday |”);<br>            break;<br>        case 4:<br>            printf(“Thursday |”);<br>            break;<br>        case 5:<br>            printf(“Friday |”);<br>            break;<br>        case 6:<br>            printf(“Saturday |”);<br>            break;<br>        default:<br>            break;<br>    }<br>    if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&gt;10&amp;&amp;p-&gt;tm_sec&gt;10)<br>        printf(“ Time：0%d:%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&gt;10)<br>        printf(“ Time：0%d:0%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：0%d:0%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：%d:0%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：%d:%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&gt;=10)<br>        printf(“ Time：%d:%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&gt;=10&amp;&amp;p-&gt;tm_min&lt;10&amp;&amp;p-&gt;tm_sec&gt;=10)<br>        printf(“ Time：%d:0%d:%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>    else if(p-&gt;tm_hour+8&lt;10&amp;&amp;p-&gt;tm_min&gt;=10&amp;&amp;p-&gt;tm_sec&lt;10)<br>        printf(“ Time：0%d:%d:0%d  |”,p-&gt;tm_hour+8,p-&gt;tm_min,p-&gt;tm_sec);<br>}<br>int main()<br>{<br>    PrintTime();<br>    return 0;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/06/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%98%BE%E7%A4%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-细胞自动机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -657,84 +984,9 @@ private void getCards(HBox pane) &#123;
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/24/hello-world/" class="archive-article-date">
-  	<time datetime="2021-03-24T08:54:51.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
