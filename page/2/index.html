@@ -60,7 +60,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			<a>总文章数 23</a>
+    			<a>总文章数 25</a>
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,153 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-vs2019问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/">vs2019问题</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-05-18T08:34:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="vs2019系统找不到指定文件"><a href="#vs2019系统找不到指定文件" class="headerlink" title="vs2019系统找不到指定文件"></a>vs2019系统找不到指定文件</h2><p>Visual Studio 2019 运行时提示无法启动程序“… .exe”系统找不到指定的文件问题<br>本人问题出在右侧无解决方案资源管理器<br>点击顶部的视图菜单并点击解决方案资源管理器即可生成<br>快捷键：Ctrl+Alt+L</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/18/vs2019%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数字华容道" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/17/%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93/">数字华容道</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/17/%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93/" class="archive-article-date">
+  	<time datetime="2021-05-17T13:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数字拼图游戏"><a href="#数字拼图游戏" class="headerlink" title="数字拼图游戏"></a>数字拼图游戏</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;conio.h&gt;<br>int step = 0;<br>void map()<br>{<br>    printf(“██████████████████████\n”);<br>    printf(“█     拼 图 游 戏    █\n”);<br>    printf(“█      1.   3×3     █\n”);<br>    printf(“█      2.   4×4     █\n”);<br>    printf(“█      3.   5×5     █\n”);<br>    printf(“█      4.   退出     █\n”);<br>    printf(“██████████████████████\n”);<br>}<br>void fun(int* a, int t, int m, int r)<br>{<br>    int i;<br>    int temp;<br>    for (i = 0; i &lt; m; i++)<br>    {<br>        if (i % r == (r - 1) &amp;&amp; (i + t) % r == 0)<br>            continue;<br>        if (i % r == 0 &amp;&amp; (i + t) % r == (r - 1))<br>            continue;<br>        if (a[i + t] == 0 &amp;&amp; (i + t) &gt;= 0 &amp;&amp; (i + t) &lt; m)<br>        {<br>            temp = a[i];<br>            a[i] = a[i + t];<br>            a[i + t] = temp;<br>            step++;<br>            return;<br>        }<br>    }<br>}<br>void move(int* a, int m, int r)<br>{<br>    char ch;<br>    int i;<br>    while (ch = _getch())<br>    {<br>        system(“cls”);<br>        if (ch == ‘w’)<br>        {<br>            i = -r;<br>            fun(a, i, m, r);<br>        }<br>        else if (ch == ‘s’)<br>        {<br>            i = r;<br>            fun(a, i, m, r);<br>        }<br>        else if (ch == ‘a’)<br>        {<br>            i = -1;<br>            fun(a, i, m, r);<br>        }<br>        else if (ch == ‘d’)<br>        {<br>            i = 1;<br>            fun(a, i, m, r);<br>        }<br>        for (i = 0; i &lt; m; i++)<br>        {<br>            if (a[i] == 0)<br>                printf(“    “);<br>            else<br>                printf(“%2d  “, a[i]);<br>            if ((i + 1) % r == 0)<br>                putchar(10);<br>        }<br>        printf(“共走：%d步!\n”, step);<br>        for (i = 0; i &lt; m-1; i++) {<br>            if (a[i] != i+1)<br>                break;<br>        }<br>        if (i == m-1) {<br>            printf(“你已经完成游戏!\n”);<br>            system(“pause”);<br>            exit(0);<br>        }<br>    }<br>}<br>void map_x(int m, int r)<br>{<br>    int i = 1, j, a[25] = { 0 }, n;<br>    srand((unsigned int)time(NULL));<br>    printf(“拼图游戏开始了：\n”);<br>    while (i &lt; m)<br>    {<br>        n = 1 + rand() % (m - 1);<br>        for (j = 1; j &lt; i; j++)<br>        {<br>            if (n == a[j])<br>                break;</p>
+<pre><code>    &#125;
+    if (j == i)
+    &#123;
+         a[i] = n;
+         i++;
+    &#125;
+&#125;
+a[0] = 0;
+for (i = 0; i &lt; m; i++)
+&#123;
+    if (a[i] == 0)
+        printf(&quot;    &quot;);
+    else
+        printf(&quot;%2d  &quot;, a[i]);
+    if ((i + 1) % r == 0)
+        putchar(10);//printf(&quot;\n&quot;);
+&#125;
+printf(&quot;共走：%d步!\n&quot;, step);
+move(a, m, r);
+</code></pre>
+<p>}<br>int main()<br>{<br>    char ch;<br>    map();<br>    printf(“请选择所玩游戏的级别：\n”);<br>    ch = _getch();<br>    while (ch != ‘1’ &amp;&amp; ch != ‘2’ &amp;&amp; ch != ‘3’ &amp;&amp; ch != ‘4’)<br>    {<br>        printf(“输入有误，请重新输入:\n”);<br>        ch = _getch();<br>    }<br>    system(“cls”);<br>    switch (ch)<br>    {<br>    case ‘1’:<br>        map_x(9, 3);<br>        break;<br>    case ‘2’:<br>        map_x(16, 4);<br>        break;<br>    case ‘3’:<br>        map_x(25, 5);<br>        break;<br>    case ‘4’:<br>        printf(“您已退出游戏，请下次再玩！\n”);<br>        exit(0);<br>        break;<br>    }<br>    return 0;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/17/%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-金山打字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -784,169 +931,6 @@ public static void main(String[] args)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2048" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/26/2048/">2048</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/26/2048/" class="archive-article-date">
-  	<time datetime="2021-04-26T12:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2048小游戏"><a href="#2048小游戏" class="headerlink" title="2048小游戏"></a>2048小游戏</h2><p>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdio.h&gt;<br>#include&lt;Windows.h&gt;<br>#include&lt;conio.h&gt;</p>
-<p>#define ROW 4<br>#define COL 4</p>
-<p>int arr[ROW][COL]={0};<br>int score=0;</p>
-<p>void SetCurPos(int x,int y){<br>    HANDLE hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);<br>    COORD coord={x,y};<br>    SetConsoleCursorPosition(hStdOutput,coord);<br>}<br>void ViewInit(int width,int height){<br>    HANDLE hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);<br>    CONSOLE_CURSOR_INFO info;<br>    GetConsoleCursorInfo(hStdOutput,&amp;info);<br>    info.bVisible=0;<br>    SetConsoleCursorInfo(hStdOutput,&amp;info);<br>}<br>void GamePrint(int row ,int col){<br>    printf(“ SCORE = %d”,score);<br>    SetCurPos(0,2);<br>    int i=0;<br>    for(i=0;i&lt;row;i++){<br>        for(int k=0;k&lt;col;k++){<br>            if(k==0&amp;&amp;i==0){<br>                printf(“┌”);<br>            }<br>            else if(k!=0&amp;&amp;i==0){<br>                printf(“┬”);<br>            }<br>            else if(k==0&amp;&amp;i!=0){<br>                printf(“├”);<br>            }<br>            else{<br>                printf(“┼”);<br>            }<br>            for(int j=0;j&lt;4;j++){<br>                printf(“─”);<br>            }<br>        }<br>        if(i==0){<br>            printf(“┐\n”);<br>        }<br>        else{<br>            printf(“┤\n”);<br>        }<br>        for(int k=0;k&lt;col;k++){<br>            printf(“│”);<br>            if(arr[i][k]){<br>                printf(“%4d”,arr[i][k]);<br>            }<br>            else{<br>                for(int j=0;j&lt;4;j++){<br>                    printf(“ “);<br>                }<br>            }<br>        }<br>        printf(“│\n”);<br>        if(i==row-1){<br>            for(int k=0;k&lt;col;k++){<br>                if(k==0){<br>                    printf(“└”);<br>                }<br>                else{<br>                    printf(“┴”);<br>                }<br>                for(int j=0;j&lt;4;j++){<br>                    printf(“─”);<br>                }<br>            }<br>            printf(“┘\n”);<br>        }<br>    }<br>    SetCurPos(0,12);<br>    printf(“ 上下左右表示方向\n”);<br>}<br>void RandNum(int row,int col){<br>    int x=0;<br>    int y=0;<br>    do{<br>        x=rand()%4;<br>        y=rand()%4;<br>    }while(arr[x][y]);<br>    arr[x][y]=(rand()%10?2:4);<br>}<br>int IfWin(int row,int col){<br>    for(int i=0;i&lt;row;i++){<br>        for(int j=0;j&lt;col;j++){<br>            if(arr[i][j]==2048){<br>                return 1;<br>            }<br>            if(arr[i][j]==0){<br>                return 0;<br>            }<br>        }<br>    }<br>    for(int i=0;i&lt;row-1;i++){<br>        for(int j=0;j&lt;col-1;j++){<br>            if(arr[i][j]==arr[i][j+1]||arr[j][i]==arr[j+1][i]){<br>                return 0;<br>            }<br>        }<br>    }<br>    return -1;<br>}<br>void MoveLeft(){<br>    for(int i=0;i&lt;ROW;i++){<br>        int j=1;<br>        int k=0;<br>        for(;j&lt;COL;j++){<br>            if(arr[i][j]&gt;0){<br>                if(arr[i][k]==0){<br>                    arr[i][k]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[i][k]==arr[i][j]){<br>                    arr[i][k]=2<em>arr[i][j];<br>                    score+=arr[i][k];<br>                    arr[i][j]=0;<br>                    k++;<br>                }<br>                else{<br>                    arr[i][++k]=arr[i][j];<br>                    if(j!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveRight(){<br>    for(int i=0;i&lt;ROW;i++){<br>        int j=COL-2;<br>        int k=COL-1;<br>        for(;j&gt;=0;j–){<br>            if(arr[i][j]&gt;0){<br>                if(arr[i][k]==0){<br>                    arr[i][k]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[i][k]==arr[i][j]){<br>                    arr[i][k]=2</em>arr[i][j];<br>                    score+=arr[i][k];<br>                    arr[i][j]=0;<br>                    k–;<br>                }<br>                else{<br>                    arr[i][–k]=arr[i][j];<br>                    if(j!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveUp(){<br>    for(int j=0;j&lt;COL;j++){<br>        int i=1;<br>        int k=0;<br>        for(;i&lt;ROW;i++){<br>            if(arr[i][j]&gt;0){<br>                if(arr[k][j]==0){<br>                    arr[k][j]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[k][j]==arr[i][j]){<br>                    arr[k][j]=2<em>arr[i][j];<br>                    score+=arr[k][j];<br>                    arr[i][j]=0;<br>                    k++;<br>                }<br>                else{<br>                    arr[++k][j]=arr[i][j];<br>                    if(i!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void MoveDown(){<br>    for(int j=0;j&lt;COL;j++){<br>        int i=ROW-2;<br>        int k=ROW-1;<br>        for(;i&gt;=0;i–){<br>            if(arr[i][j]&gt;0){<br>                if(arr[k][j]==0){<br>                    arr[k][j]=arr[i][j];<br>                    arr[i][j]=0;<br>                }<br>                else if(arr[k][j]==arr[i][j]){<br>                    arr[k][j]=2</em>arr[i][j];<br>                    score+=arr[k][j];<br>                    arr[i][j]=0;<br>                    k–;<br>                }<br>                else{<br>                    arr[–k][j]=arr[i][j];<br>                    if(i!=k){<br>                        arr[i][j]=0;<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br>void GameContinue(){<br>    int ch2=0;<br>    while(1){<br>        ch2=_getch();<br>        if(ch2==72){<br>            MoveUp();<br>            break;<br>        }<br>        if(ch2==80){<br>            MoveDown();<br>            break;<br>        }<br>        if(ch2==75){<br>            MoveLeft();<br>            break;<br>        }<br>        if(ch2==77){<br>            MoveRight();<br>            break;<br>        }<br>    }<br>}<br>void game(){<br>    srand((unsigned int)time(NULL));<br>    ViewInit(20,10);<br>    RandNum(ROW,COL);<br>    RandNum(ROW,COL);<br>    GamePrint(ROW,COL);<br>    while(1){<br>        if(IfWin(ROW,COL)==1){<br>            printf(“YOU WIN!\n”);<br>            return;<br>        }<br>        else if(IfWin(ROW,COL)==-1){<br>            printf(“GAME OVER\n”);<br>            return;<br>        }<br>        else{<br>            GameContinue();<br>            system(“cls”);<br>            RandNum(ROW,COL);<br>            GamePrint(ROW,COL);<br>        }<br>    }<br>}<br>int main(){<br>    game();<br>    system(“pause”);<br>    return 0;<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/26/2048/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-课后习题随机卡牌生成器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">一道简单的课后习题</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2021-04-15T09:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="随机生成四张卡牌器"><a href="#随机生成四张卡牌器" class="headerlink" title="随机生成四张卡牌器"></a>随机生成四张卡牌器</h2><p>package cn.campsg.gm;</p>
-<p>import javafx.application.Application;<br>import javafx.stage.Stage;<br>import javafx.scene.Scene;<br>import javafx.scene.image.Image;<br>import javafx.scene.image.ImageView;<br>import javafx.scene.layout.HBox;<br>import javafx.scene.layout.VBox;<br>import javafx.geometry.Insets;<br>import javafx.geometry.Pos;<br>import javafx.scene.control.Button;<br>import java.util.ArrayList;</p>
-<p>public class Main extends Application {<br>    @Override<br>    public void start(Stage primaryStage) {<br>        VBox vBox = new VBox();<br>        vBox.setAlignment(Pos.CENTER);<br>        vBox.setPadding(new Insets(5, 5, 5, 5));</p>
-<pre><code>    HBox hBox = new HBox(5);
-    hBox.setAlignment(Pos.CENTER);
-    hBox.setPadding(new Insets(5, 5, 5, 5));
-    getCards(hBox);
-
-    Button btRefresh = new Button(&quot;Refresh&quot;);
-
-    btRefresh.setOnAction(e -&gt; getCards(hBox));
-
-    vBox.getChildren().addAll(hBox, btRefresh);
-
-    Scene scene = new Scene(vBox);
-    primaryStage.setTitle(&quot;Exercise_15_01&quot;);
-    primaryStage.setScene(scene);
-    primaryStage.show();
-&#125;
-private void getCards(HBox pane) &#123;
-    pane.getChildren().clear();
-    ArrayList&lt;Integer&gt; cards = new ArrayList&lt;&gt;();
-    for (int i = 0; i &lt; 52; i++) &#123;
-        cards.add(i + 1);
-    &#125;
-
-    java.util.Collections.shuffle(cards);
-
-    for (int i = 0; i &lt; 4; i++) &#123;
-        pane.getChildren().add(new ImageView(new Image(&quot;file:/C:/Users/86178/Desktop/card/&quot; +
-                cards.get(i) + &quot;.png&quot;)));
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E9%9A%8F%E6%9C%BA%E5%8D%A1%E7%89%8C%E7%94%9F%E6%88%90%E5%99%A8/">展开全文 >></a>
         </p>
       
 
