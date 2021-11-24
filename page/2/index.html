@@ -60,7 +60,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			<a>总文章数 25</a>
+    			<a>总文章数 26</a>
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,78 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-扫雷（简易版）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/">扫雷（简易版）</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2021-05-18T12:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="扫雷（无鼠标事件）"><a href="#扫雷（无鼠标事件）" class="headerlink" title="扫雷（无鼠标事件）"></a>扫雷（无鼠标事件）</h2><p>#include &lt;time.h&gt;<br>#include <iostream><br>using namespace std;<br>#define ROW 9<br>#define COL 9<br>#define ROWS ROW+2<br>#define COLS COL+2<br>#define MINE 10<br>void InitBoard(char board[ROWS][COLS], int rows, int cols, char set);<br>void DisplayBoard(char board[ROWS][COLS], int row, int col);<br>void SetMine(char board[ROWS][COLS], int row, int col);<br>int Get_mine_count(char mine[ROWS][COLS], int x, int y);<br>void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);<br>void LaunchMine(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y);<br>int IsWin(char show[ROWS][COLS], int row, int col);<br>void game()<br>{<br>    char mine[ROWS][COLS];<br>    char show[ROWS][COLS];<br>    InitBoard(mine, ROWS, COLS, ‘0’);<br>    InitBoard(show, ROWS, COLS, ‘<em>‘);<br>    DisplayBoard(show, ROW, COL);<br>    SetMine(mine, ROW, COL);<br>    FindMine(mine, show, ROW, COL);<br>}<br>void menu()<br>{<br>    system(“cls”);<br>    printf(“——————————\n”);<br>    printf(“———– 1. play ———-\n”);<br>    printf(“———– 0. exit ———-\n”);<br>    printf(“——————————\n”);<br>}<br>int main()<br>{<br>    int input = 0;<br>    srand((unsigned int)time(NULL));<br>    do<br>    {<br>        menu();<br>        cout &lt;&lt; “请选择：”;<br>        cin &gt;&gt; input;<br>        switch (input)<br>        {<br>        case 1:<br>            game();<br>            break;<br>        case 0:<br>            cout &lt;&lt; “退出游戏！” &lt;&lt; endl;<br>            break;<br>        default:<br>            cout &lt;&lt; “选择错误，请重新选择！” &lt;&lt; endl;<br>            break;<br>        }<br>    } while (input);<br>    return 0;<br>}<br>void InitBoard(char board[ROWS][COLS], int rows, int cols, char set)<br>{<br>    for (int i = 0; i &lt; rows; i++)<br>    {<br>        for (int j = 0; j &lt; cols; j++)<br>        {<br>            board[i][j] = set;<br>        }<br>    }<br>}<br>void DisplayBoard(char board[ROWS][COLS], int row, int col)<br>{<br>    system(“cls”);<br>    for (int i = 0; i &lt;= col; i++)<br>        cout &lt;&lt; i &lt;&lt; “ “;<br>    cout &lt;&lt; endl;<br>    for (int i = 1; i &lt;= row; i++)<br>    {<br>        cout &lt;&lt; i &lt;&lt; “ “;<br>        for (int j = 1; j &lt;= col; j++)<br>        {<br>            cout &lt;&lt; board[i][j] &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>void SetMine(char board[ROWS][COLS], int row, int col)<br>{<br>    int count = MINE;<br>    while (count)<br>    {<br>        int x = rand() % row + 1;<br>        int y = rand() % col + 1;<br>        if (board[x][y] == ‘0’)<br>        {<br>            board[x][y] = ‘1’;<br>            count–;<br>        }<br>    }<br>}<br>int Get_mine_count(char mine[ROWS][COLS], int x, int y)<br>{<br>    return mine[x - 1][y + 1] + mine[x][y + 1] + mine[x + 1][y + 1] + mine[x - 1][y] +<br>        mine[x + 1][y] + mine[x - 1][y - 1] + mine[x][y - 1] + mine[x + 1][y - 1] - 8 * ‘0’;<br>}<br>void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)<br>{<br>    int x = 0;<br>    int y = 0;<br>    while (1)<br>    {<br>        cout &lt;&lt; “请输入排雷的坐标：”;<br>        cin &gt;&gt; x &gt;&gt; y;;<br>        if (x &gt;= 1 &amp;&amp; x &lt;= row &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= col)<br>        {<br>            if (show[x][y] == ‘</em>‘)<br>            {<br>                if (mine[x][y] == ‘1’)<br>                {<br>                    DisplayBoard(mine, row, col);<br>                    cout &lt;&lt; “很遗憾，你被炸死了！” &lt;&lt; endl;<br>                    system(“pause”);<br>                    break;<br>                }else<br>                {<br>                    int count = Get_mine_count(mine, x, y);<br>                    show[x][y] = count + ‘0’;<br>                    if (count == 0)<br>                    {<br>                        LaunchMine(mine, show, x, y);<br>                    }<br>                    DisplayBoard(show, ROW, COL);<br>                }<br>            }else<br>            {<br>                cout &lt;&lt; “输入坐标已排过雷，请重新输入！” &lt;&lt; endl;<br>            }<br>        }else<br>        {<br>            cout &lt;&lt; “输入坐标非法，请重新输入！” &lt;&lt; endl;<br>        }<br>        if (IsWin(show, ROW, COL) == MINE)<br>        {</p>
+<pre><code>        DisplayBoard(mine, row, col);
+        cout &lt;&lt; &quot;恭喜你，排雷成功！&quot; &lt;&lt; endl;
+        system(&quot;pause&quot;);
+        break;
+    &#125;
+
+&#125;
+</code></pre>
+<p>}<br>int IsWin(char show[ROWS][COLS], int row, int col)<br>{<br>    int count = 0;<br>    for (int i = 1; i &lt;= row; i++)<br>    {<br>        for (int j = 1; j &lt;= col; j++)<br>        {<br>            if (show[i][j] == ‘<em>‘)<br>            {<br>                count++;<br>            }<br>        }<br>    }<br>    return count;<br>}<br>void LaunchMine(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y)<br>{<br>    if (x &gt;= 1 &amp;&amp; x &lt;= ROW &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= COL)<br>    {<br>        int count = Get_mine_count(mine, x, y);<br>        if (count == 0)<br>        {<br>            show[x][y] = ‘ ‘;<br>            if (show[x - 1][y - 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x - 1, y - 1);<br>            if (show[x - 1][y] == ‘<em>‘)<br>                LaunchMine(mine, show, x - 1, y);<br>            if (show[x - 1][y + 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x - 1, y + 1);<br>            if (show[x][y - 1] == ‘<em>‘)<br>                LaunchMine(mine, show, x, y - 1);<br>            if (show[x][y + 1] == ‘</em>‘)<br>                LaunchMine(mine, show, x, y + 1);<br>            if (show[x + 1][y - 1] == ‘<em>‘)<br>                LaunchMine(mine, show, x + 1, y - 1);<br>            if (show[x + 1][y] == ‘</em>‘)<br>                LaunchMine(mine, show, x + 1, y);<br>            if (show[x + 1][y + 1] == ‘*’)<br>                LaunchMine(mine, show, x + 1, y + 1);<br>        }else<br>        {<br>            show[x][y] = count + ‘0’;<br>        }<br>    }<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/18/%E6%89%AB%E9%9B%B7%EF%BC%88%E7%AE%80%E6%98%93%E7%89%88%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-vs2019问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -867,70 +939,6 @@ public static void main(String[] args)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/27/IDEA%E4%B8%8B%E8%BD%BD%E6%89%93%E4%B8%8D%E5%BC%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-贪吃蛇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/">贪吃蛇</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/" class="archive-article-date">
-  	<time datetime="2021-04-27T11:25:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="贪吃蛇"><a href="#贪吃蛇" class="headerlink" title="贪吃蛇"></a>贪吃蛇</h2><p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#include&lt;windows.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;conio.h&gt;</p>
-<p>#define up ‘w’<br>#define down ‘s’<br>#define left ‘a’<br>#define right ‘d’<br>typedef struct Snake{<br>    int x;<br>    int y;<br>    struct Snake* next;<br>}snake;<br>snake* head;<br>struct Food{<br>    int x;<br>    int y;<br>}food;<br>char name[20];<br>int score=0;<br>char click=1;<br>int speed;<br>void gotoxy(int x,int y){<br>    COORD pos;<br>    pos.X=x;<br>    pos.Y=y;<br>    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),pos);<br>    CONSOLE_CURSOR_INFO info;<br>    info.bVisible=FALSE;<br>    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&amp;info);<br>}<br>void welcome(){<br>    gotoxy(15,10);<br>    printf(“/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>/“);<br>    gotoxy(15,20);<br>    printf(“/</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/“);<br>    gotoxy(20,13);<br>    printf(“WELCOME TO THE GAME OF RETRO SNAKE”);<br>    gotoxy(20,18);<br>    printf(“PLEASE ENTER YOUR NAME:”);<br>    scanf(“%s”,&amp;name,20);<br>    system(“cls”);<br>}<br>void creategraph(){<br>    int i;<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),2);<br>    for(i=0;i&lt;58;i+=2){<br>        gotoxy(i,0);<br>        printf(“■”);<br>        gotoxy(i,26);<br>        printf(“■”);<br>    }<br>    for(i=1;i&lt;26;i++){<br>        gotoxy(0,i);<br>        printf(“■”);<br>        gotoxy(56,i);<br>        printf(“■”);<br>    }<br>    head=(snake*)malloc(sizeof(snake));<br>    snake* p=(snake*)malloc(sizeof(snake));<br>    snake* q=(snake*)malloc(sizeof(snake));<br>    head-&gt;x=16;<br>    head-&gt;y=15;<br>    p-&gt;x=16;<br>    p-&gt;y=16;<br>    q-&gt;x=16;<br>    q-&gt;y=17;<br>    head-&gt;next=p;<br>    p-&gt;next=q;<br>    q-&gt;next=NULL;<br>}<br>createfood(){<br>    bool flag=false;<br>    while(!flag)<br>    {<br>        flag=true;<br>        srand((int)time(NULL));<br>        food.y=rand()%(25-1+1)+1;<br>        food.x=rand()%(54-2+1)+2;<br>        if(food.x%2!=0)<br>        {<br>            food.x=food.x+1;<br>        }<br>        snake* judge=head;<br>        while(1)<br>        {<br>            if(food.x==judge-&gt;x&amp;&amp;food.y==judge-&gt;y)<br>            {<br>                flag=false;<br>            }<br>            if(judge-&gt;next==NULL){<br>                break;<br>            }<br>            judge = judge-&gt;next;<br>        }<br>    }<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);<br>    gotoxy(food.x,food.y);<br>    printf(“★”);<br>}<br>void finish(){<br>    system(“cls”);<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),6);<br>    gotoxy(20, 16);<br>    printf(“Your Score is %d.”, score);<br>    snake* p=head;<br>    snake* q;<br>    while(p!=NULL){<br>        q=p-&gt;next;<br>        free(p);<br>        p=q;<br>    }<br>    system(“pause”);<br>}<br>int judge(){<br>    if (head-&gt;x==0||head-&gt;x==56||head-&gt;y==0||head-&gt;y==26)<br>    {<br>        finish();<br>        return 0;<br>    }<br>    snake* p=head-&gt;next;<br>    while(p!=NULL)<br>    {<br>        if(head-&gt;x==p-&gt;x&amp;&amp;head-&gt;y==p-&gt;y)<br>        {<br>            finish();<br>            return 0;<br>        }<br>        p=p-&gt;next;<br>    }<br>    return 1;<br>}<br>void changebody(int x,int y){<br>    snake* p=head;<br>    while(p-&gt;next-&gt;next!=NULL){<br>        p=p-&gt;next;<br>    }<br>    free(p-&gt;next);<br>    p-&gt;next=NULL;<br>    snake* newhead=(snake*)malloc(sizeof(snake));<br>    newhead-&gt;x=x;<br>    newhead-&gt;y=y;<br>    newhead-&gt;next=head;<br>    head=newhead;<br>}<br>void movebody(){<br>    int x=head-&gt;x,y=head-&gt;y;<br>    snake* p=head;<br>    while(p-&gt;next!=NULL){<br>        p=p-&gt;next;<br>    }<br>    gotoxy(p-&gt;x,p-&gt;y);<br>    printf(“  “);<br>    switch(click){<br>        case up:<br>            y-=1;<br>            break;<br>        case down:<br>            y+=1;<br>            break;<br>        case left:<br>            x-=2;<br>            break;<br>        case right:<br>            x+=2;<br>            break;<br>        default:<br>            break;<br>    }<br>    if(x!=head-&gt;x||y!=head-&gt;y){<br>        changebody(x,y);<br>    }<br>    p=head;<br>    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),11);<br>    gotoxy(p-&gt;x,p-&gt;y);<br>    printf(“■”);<br>    if(score&lt;=100)<br>        speed=150;<br>    else if(score&lt;=200)<br>        speed=100;<br>    else if(score&lt;=400)<br>        speed=50;<br>    else<br>        speed=10;<br>        Sleep(speed);<br>}<br>void eat(){<br>    if(head-&gt;x==food.x&amp;&amp;head-&gt;y==food.y){<br>        createfood();<br>        snake* _new=(snake*)malloc(sizeof(snake));<br>        snake* p=head;<br>        while(p-&gt;next!=NULL){<br>            p=p-&gt;next;<br>        }<br>        p-&gt;next=_new;<br>        _new-&gt;next=NULL;<br>        score+=10;<br>        gotoxy(64,15);<br>        printf(“YOUR SCORE:%d”,score);<br>    }<br>}<br>int clickcontrol(){<br>    char c;<br>    while(1){<br>        if(judge()==0)<br>            return 0;<br>        if(_kbhit()){<br>            click=_getch();<br>        }<br>        movebody();<br>        eat();<br>    }<br>    return 1;<br>}<br>int main(){<br>    system(“title 贪吃蛇”);<br>    system(“color 0B”);<br>    system(“mode con cols=80 lines=40”);//设置窗口尺寸<br>    welcome();<br>    creategraph();<br>    createfood();<br>    if(clickcontrol()==0)<br>        return 0;<br>    return 0;<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E8%B4%AA%E5%90%83%E8%9B%87/">展开全文 >></a>
         </p>
       
 
